@@ -1,4 +1,8 @@
-# [文档](https://github.com/fluttify-project/amap_map_fluttify/wiki) [文档](https://github.com/fluttify-project/amap_map_fluttify/wiki) [文档](https://github.com/fluttify-project/amap_map_fluttify/wiki)
+# 方法补充
+
+- 获取在当前缩放级别下, 基于地图中心点, 1 screen point 对应的距离(单位是米)
+-- `AmapController.getMetersPerPixel()` 
+
 
 ![Logo](https://github.com/fluttify-project/fluttify-core-example/blob/develop/other/Logo-Landscape.png?raw=true)
 

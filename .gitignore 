@@ -1,0 +1,43 @@
+# Flutter/Dart 通用忽略
+/.dart_tool/
+/.idea/
+/.vscode/
+/build/
+/cache/
+/pubspec.lock
+
+# 测试和分析工具生成的文件
+/coverage/
+/lcov/
+/test/.test_output/
+
+# Android 特定忽略
+/android/.gradle/
+/android/build/
+/android/local.properties
+/android/key.properties
+
+# iOS 特定忽略
+/ios/.symlinks/
+/ios/Pods/
+/ios/Podfile.lock
+/ios/Flutter/flutter_export_environment.sh
+/ios/Flutter/App.framework
+/ios/Flutter/Flutter.framework
+/ios/Flutter/Flutter.podspec
+
+# Web 特定忽略
+/web/build/
+
+# 个人配置文件
+/.packages
+/.metadata
+/.flutter-plugins
+/.flutter-plugins-dependencies
+
+# 日志和临时文件
+*.log
+*.iml
+*.swp
+*.swo
+.DS_Store

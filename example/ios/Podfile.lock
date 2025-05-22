@@ -1,0 +1,118 @@
+PODS:
+  - AMap3DMap-NO-IDFA (9.2.1):
+    - AMapFoundation-NO-IDFA (~> 1.6.9)
+  - amap_core_fluttify (0.0.1):
+    - AMapFoundation-NO-IDFA (~> 1.6.9)
+    - Flutter
+    - foundation_fluttify
+  - amap_location_fluttify (0.0.1):
+    - AMapLocation-NO-IDFA (= 2.8.0)
+    - Flutter
+    - foundation_fluttify
+  - amap_map_fluttify (0.0.1):
+    - AMap3DMap-NO-IDFA (= 9.2.1)
+    - Flutter
+    - foundation_fluttify
+  - amap_search_fluttify (0.0.1):
+    - AMapSearch-NO-IDFA (= 9.2.0)
+    - Flutter
+    - foundation_fluttify
+  - AMapFoundation-NO-IDFA (1.6.9)
+  - AMapLocation-NO-IDFA (2.8.0):
+    - AMapFoundation-NO-IDFA (~> 1.6.9)
+  - AMapSearch-NO-IDFA (9.2.0):
+    - AMapFoundation-NO-IDFA (~> 1.6.9)
+  - core_location_fluttify (0.0.1):
+    - Flutter
+    - foundation_fluttify
+  - Flutter (1.0.0)
+  - foundation_fluttify (0.0.1):
+    - Flutter
+  - path_provider_foundation (0.0.1):
+    - Flutter
+    - FlutterMacOS
+  - permission_handler_apple (9.3.0):
+    - Flutter
+  - share_plus (0.0.1):
+    - Flutter
+  - shared_preferences_foundation (0.0.1):
+    - Flutter
+    - FlutterMacOS
+  - sqflite_darwin (0.0.4):
+    - Flutter
+    - FlutterMacOS
+  - url_launcher_ios (0.0.1):
+    - Flutter
+
+DEPENDENCIES:
+  - amap_core_fluttify (from `.symlinks/plugins/amap_core_fluttify/ios`)
+  - amap_location_fluttify (from `.symlinks/plugins/amap_location_fluttify/ios`)
+  - amap_map_fluttify (from `.symlinks/plugins/amap_map_fluttify/ios`)
+  - amap_search_fluttify (from `.symlinks/plugins/amap_search_fluttify/ios`)
+  - core_location_fluttify (from `.symlinks/plugins/core_location_fluttify/ios`)
+  - Flutter (from `Flutter`)
+  - foundation_fluttify (from `.symlinks/plugins/foundation_fluttify/ios`)
+  - path_provider_foundation (from `.symlinks/plugins/path_provider_foundation/darwin`)
+  - permission_handler_apple (from `.symlinks/plugins/permission_handler_apple/ios`)
+  - share_plus (from `.symlinks/plugins/share_plus/ios`)
+  - shared_preferences_foundation (from `.symlinks/plugins/shared_preferences_foundation/darwin`)
+  - sqflite_darwin (from `.symlinks/plugins/sqflite_darwin/darwin`)
+  - url_launcher_ios (from `.symlinks/plugins/url_launcher_ios/ios`)
+
+SPEC REPOS:
+  trunk:
+    - AMap3DMap-NO-IDFA
+    - AMapFoundation-NO-IDFA
+    - AMapLocation-NO-IDFA
+    - AMapSearch-NO-IDFA
+
+EXTERNAL SOURCES:
+  amap_core_fluttify:
+    :path: ".symlinks/plugins/amap_core_fluttify/ios"
+  amap_location_fluttify:
+    :path: ".symlinks/plugins/amap_location_fluttify/ios"
+  amap_map_fluttify:
+    :path: ".symlinks/plugins/amap_map_fluttify/ios"
+  amap_search_fluttify:
+    :path: ".symlinks/plugins/amap_search_fluttify/ios"
+  core_location_fluttify:
+    :path: ".symlinks/plugins/core_location_fluttify/ios"
+  Flutter:
+    :path: Flutter
+  foundation_fluttify:
+    :path: ".symlinks/plugins/foundation_fluttify/ios"
+  path_provider_foundation:
+    :path: ".symlinks/plugins/path_provider_foundation/darwin"
+  permission_handler_apple:
+    :path: ".symlinks/plugins/permission_handler_apple/ios"
+  share_plus:
+    :path: ".symlinks/plugins/share_plus/ios"
+  shared_preferences_foundation:
+    :path: ".symlinks/plugins/shared_preferences_foundation/darwin"
+  sqflite_darwin:
+    :path: ".symlinks/plugins/sqflite_darwin/darwin"
+  url_launcher_ios:
+    :path: ".symlinks/plugins/url_launcher_ios/ios"
+
+SPEC CHECKSUMS:
+  AMap3DMap-NO-IDFA: 6660036f9a8c28ed3e9037936210121599055a2e
+  amap_core_fluttify: b84657ba39ee287a4b96bbcc0a6e67612cc3808f
+  amap_location_fluttify: 7dc366b959d3ea9ce0b826e60c22a15cec54bbad
+  amap_map_fluttify: 4eaf28184c3cac71f7cf1fb2799c919886792ca8
+  amap_search_fluttify: cfab91aa65730337fff54705aae0423ea752fc91
+  AMapFoundation-NO-IDFA: cc2ec7a2828ef292358ad594b7ee0ae21a7f097b
+  AMapLocation-NO-IDFA: 9d7ec9b052405356600b59fe0a9a65261bacc54e
+  AMapSearch-NO-IDFA: 9df378c88d50083346412ee3e0a10e2c451c7139
+  core_location_fluttify: 9466a411ea7d22c6349c7e6a767ae4623f01eb1d
+  Flutter: e0871f40cf51350855a761d2e70bf5af5b9b5de7
+  foundation_fluttify: 0c45145e3fad1fb99188e4979daed5b24cd9b278
+  path_provider_foundation: 2b6b4c569c0fb62ec74538f866245ac84301af46
+  permission_handler_apple: 9878588469a2b0d0fc1e048d9f43605f92e6cec2
+  share_plus: 8b6f8b3447e494cca5317c8c3073de39b3600d1f
+  shared_preferences_foundation: fcdcbc04712aee1108ac7fda236f363274528f78
+  sqflite_darwin: 5a7236e3b501866c1c9befc6771dfd73ffb8702d
+  url_launcher_ios: 5334b05cef931de560670eeae103fd3e431ac3fe
+
+PODFILE CHECKSUM: fad66a6aaa5ffed284f1be0c4e335a59b81ff4fc
+
+COCOAPODS: 1.16.2

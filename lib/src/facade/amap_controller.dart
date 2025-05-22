@@ -613,8 +613,9 @@ class AmapController with WidgetsBindingObserver, IMapController {
     );
   }
 
+  /// 获取在当前缩放级别下, 基于地图中心点, 1 screen point 对应的距离(单位是米)
   @override
-  Future<double?> getMetersPerPixel() {
+  Future<double?> getMetersPerPixel() async {
     return platform(
       android: (pool) async {
         final map = await androidController!.getMap();

@@ -1,4 +1,0 @@
-enum UIBarStyle {
-  UIBarStyleDefault,
-  UIBarStyleBlack,
-}

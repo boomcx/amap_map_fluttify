@@ -10,31 +10,11 @@ dependencies:
   flutter:
     sdk: flutter
   
-  uni_map_platform_interface:
-    git:
-      url: https://github.com/boomcx/amap_map_fluttify.git
-      path: dependencies/uni_map_platform_interface
-  url_launcher: ^6.3.1
-  foundation_fluttify:
-    git:
-      url: https://github.com/boomcx/amap_map_fluttify.git
-      path: dependencies/foundation_fluttify
-  core_location_fluttify:
-    git:
-      url: https://github.com/boomcx/amap_map_fluttify.git
-      path: dependencies/core_location_fluttify
-  amap_core_fluttify:
-    git:
-      url: https://github.com/boomcx/amap_map_fluttify.git
-      path: dependencies/amap_core_fluttify
-  amap_search_fluttify:
-    git:
-      url: https://github.com/boomcx/amap_map_fluttify.git
-      path: dependencies/amap_search_fluttify
-  amap_location_fluttify:
-    git:
-      url: https://github.com/boomcx/amap_map_fluttify.git
-      path: dependencies/amap_location_fluttify
+  foundation_fluttify: ^0.13.0+1
+  core_location_fluttify: ^0.7.1
+  amap_core_fluttify: ^0.17.0
+  amap_search_fluttify: ^0.18.0
+  amap_location_fluttify: ^0.22.0
 
 dev_dependencies:
   flutter_test:

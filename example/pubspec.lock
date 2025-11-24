@@ -17,16 +17,20 @@ packages:
   amap_core_fluttify:
     dependency: transitive
     description:
-      path: "../dependencies/amap_core_fluttify"
-      relative: true
-    source: path
+      path: "dependencies/amap_core_fluttify"
+      ref: HEAD
+      resolved-ref: "56392ed50cd3c7dc60070c4aaef173b14c3241a8"
+      url: "https://github.com/boomcx/amap_map_fluttify.git"
+    source: git
     version: "0.17.0"
   amap_location_fluttify:
     dependency: transitive
     description:
-      path: "../dependencies/amap_location_fluttify"
-      relative: true
-    source: path
+      path: "dependencies/amap_location_fluttify"
+      ref: HEAD
+      resolved-ref: "56392ed50cd3c7dc60070c4aaef173b14c3241a8"
+      url: "https://github.com/boomcx/amap_map_fluttify.git"
+    source: git
     version: "0.20.0-dev.1"
   amap_map_fluttify:
     dependency: "direct dev"
@@ -38,9 +42,11 @@ packages:
   amap_search_fluttify:
     dependency: transitive
     description:
-      path: "../dependencies/amap_search_fluttify"
-      relative: true
-    source: path
+      path: "dependencies/amap_search_fluttify"
+      ref: HEAD
+      resolved-ref: "56392ed50cd3c7dc60070c4aaef173b14c3241a8"
+      url: "https://github.com/boomcx/amap_map_fluttify.git"
+    source: git
     version: "0.18.0"
   analyzer:
     dependency: transitive
@@ -157,9 +163,11 @@ packages:
   core_location_fluttify:
     dependency: transitive
     description:
-      path: "../dependencies/core_location_fluttify"
-      relative: true
-    source: path
+      path: "dependencies/core_location_fluttify"
+      ref: HEAD
+      resolved-ref: "56392ed50cd3c7dc60070c4aaef173b14c3241a8"
+      url: "https://github.com/boomcx/amap_map_fluttify.git"
+    source: git
     version: "0.7.1"
   coverage:
     dependency: transitive
@@ -313,9 +321,11 @@ packages:
   foundation_fluttify:
     dependency: transitive
     description:
-      path: "../dependencies/foundation_fluttify"
-      relative: true
-    source: path
+      path: "dependencies/foundation_fluttify"
+      ref: HEAD
+      resolved-ref: "56392ed50cd3c7dc60070c4aaef173b14c3241a8"
+      url: "https://github.com/boomcx/amap_map_fluttify.git"
+    source: git
     version: "0.13.0+1"
   frontend_server_client:
     dependency: transitive
@@ -965,9 +975,11 @@ packages:
   uni_map_platform_interface:
     dependency: transitive
     description:
-      path: "../dependencies/uni_map_platform_interface"
-      relative: true
-    source: path
+      path: "dependencies/uni_map_platform_interface"
+      ref: HEAD
+      resolved-ref: "56392ed50cd3c7dc60070c4aaef173b14c3241a8"
+      url: "https://github.com/boomcx/amap_map_fluttify.git"
+    source: git
     version: "0.7.0-rc.0"
   url_launcher:
     dependency: transitive

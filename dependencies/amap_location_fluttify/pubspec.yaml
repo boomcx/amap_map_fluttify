@@ -12,12 +12,18 @@ dependencies:
   flutter:
     sdk: flutter
   amap_core_fluttify:
-    path: ../amap_core_fluttify
+    git:
+      url: https://github.com/boomcx/amap_map_fluttify.git
+      path: dependencies/amap_core_fluttify
   
   foundation_fluttify:
-    path: ../foundation_fluttify
+    git:
+      url: https://github.com/boomcx/amap_map_fluttify.git
+      path: dependencies/foundation_fluttify
   core_location_fluttify:
-    path: ../core_location_fluttify
+    git:
+      url: https://github.com/boomcx/amap_map_fluttify.git
+      path: dependencies/core_location_fluttify
 
 dev_dependencies:
   flutter_test:

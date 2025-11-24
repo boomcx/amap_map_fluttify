@@ -1,10 +1,10 @@
 # This is a generated file; do not edit or check into version control.
-amap_core_fluttify=/Users/Apple/Desktop/Pub/amap_map_fluttify/dependencies/amap_core_fluttify/
-amap_location_fluttify=/Users/Apple/Desktop/Pub/amap_map_fluttify/dependencies/amap_location_fluttify/
+amap_core_fluttify=/Users/Apple/.pub-cache/git/amap_map_fluttify-56392ed50cd3c7dc60070c4aaef173b14c3241a8/dependencies/amap_core_fluttify/
+amap_location_fluttify=/Users/Apple/.pub-cache/git/amap_map_fluttify-56392ed50cd3c7dc60070c4aaef173b14c3241a8/dependencies/amap_location_fluttify/
 amap_map_fluttify=/Users/Apple/Desktop/Pub/amap_map_fluttify/
-amap_search_fluttify=/Users/Apple/Desktop/Pub/amap_map_fluttify/dependencies/amap_search_fluttify/
-core_location_fluttify=/Users/Apple/Desktop/Pub/amap_map_fluttify/dependencies/core_location_fluttify/
-foundation_fluttify=/Users/Apple/Desktop/Pub/amap_map_fluttify/dependencies/foundation_fluttify/
+amap_search_fluttify=/Users/Apple/.pub-cache/git/amap_map_fluttify-56392ed50cd3c7dc60070c4aaef173b14c3241a8/dependencies/amap_search_fluttify/
+core_location_fluttify=/Users/Apple/.pub-cache/git/amap_map_fluttify-56392ed50cd3c7dc60070c4aaef173b14c3241a8/dependencies/core_location_fluttify/
+foundation_fluttify=/Users/Apple/.pub-cache/git/amap_map_fluttify-56392ed50cd3c7dc60070c4aaef173b14c3241a8/dependencies/foundation_fluttify/
 path_provider=/Users/Apple/.pub-cache/hosted/pub.flutter-io.cn/path_provider-2.1.5/
 path_provider_android=/Users/Apple/.pub-cache/hosted/pub.flutter-io.cn/path_provider_android-2.2.15/
 path_provider_foundation=/Users/Apple/.pub-cache/hosted/pub.flutter-io.cn/path_provider_foundation-2.4.1/

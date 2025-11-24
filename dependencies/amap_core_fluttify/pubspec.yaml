@@ -13,9 +13,13 @@ dependencies:
   
   
   foundation_fluttify:
-    path: ../foundation_fluttify
+    git:
+      url: https://github.com/boomcx/amap_map_fluttify.git
+      path: dependencies/foundation_fluttify
   core_location_fluttify:
-    path: ../core_location_fluttify
+    git:
+      url: https://github.com/boomcx/amap_map_fluttify.git
+      path: dependencies/core_location_fluttify
 
 dev_dependencies:
   flutter_test:

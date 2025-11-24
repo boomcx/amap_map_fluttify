@@ -5,22 +5,28 @@ packages:
     dependency: "direct main"
     description:
       path: "dependencies/amap_core_fluttify"
-      relative: true
-    source: path
+      ref: HEAD
+      resolved-ref: "56392ed50cd3c7dc60070c4aaef173b14c3241a8"
+      url: "https://github.com/boomcx/amap_map_fluttify.git"
+    source: git
     version: "0.17.0"
   amap_location_fluttify:
     dependency: "direct main"
     description:
       path: "dependencies/amap_location_fluttify"
-      relative: true
-    source: path
+      ref: HEAD
+      resolved-ref: "56392ed50cd3c7dc60070c4aaef173b14c3241a8"
+      url: "https://github.com/boomcx/amap_map_fluttify.git"
+    source: git
     version: "0.20.0-dev.1"
   amap_search_fluttify:
     dependency: "direct main"
     description:
       path: "dependencies/amap_search_fluttify"
-      relative: true
-    source: path
+      ref: HEAD
+      resolved-ref: "56392ed50cd3c7dc60070c4aaef173b14c3241a8"
+      url: "https://github.com/boomcx/amap_map_fluttify.git"
+    source: git
     version: "0.18.0"
   async:
     dependency: transitive
@@ -66,8 +72,10 @@ packages:
     dependency: "direct main"
     description:
       path: "dependencies/core_location_fluttify"
-      relative: true
-    source: path
+      ref: HEAD
+      resolved-ref: "56392ed50cd3c7dc60070c4aaef173b14c3241a8"
+      url: "https://github.com/boomcx/amap_map_fluttify.git"
+    source: git
     version: "0.7.1"
   fake_async:
     dependency: transitive
@@ -104,8 +112,10 @@ packages:
     dependency: "direct main"
     description:
       path: "dependencies/foundation_fluttify"
-      relative: true
-    source: path
+      ref: HEAD
+      resolved-ref: "56392ed50cd3c7dc60070c4aaef173b14c3241a8"
+      url: "https://github.com/boomcx/amap_map_fluttify.git"
+    source: git
     version: "0.13.0+1"
   leak_tracker:
     dependency: transitive
@@ -236,8 +246,10 @@ packages:
     dependency: "direct main"
     description:
       path: "dependencies/uni_map_platform_interface"
-      relative: true
-    source: path
+      ref: HEAD
+      resolved-ref: "56392ed50cd3c7dc60070c4aaef173b14c3241a8"
+      url: "https://github.com/boomcx/amap_map_fluttify.git"
+    source: git
     version: "0.7.0-rc.0"
   url_launcher:
     dependency: "direct main"

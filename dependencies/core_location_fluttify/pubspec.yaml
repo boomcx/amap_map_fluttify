@@ -12,7 +12,9 @@ dependencies:
   flutter:
     sdk: flutter
   foundation_fluttify:
-    path: ../foundation_fluttify
+    git:
+      url: https://github.com/boomcx/amap_map_fluttify.git
+      path: dependencies/foundation_fluttify
 
 dev_dependencies:
   flutter_test:

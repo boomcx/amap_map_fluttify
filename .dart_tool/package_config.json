@@ -3,19 +3,19 @@
   "packages": [
     {
       "name": "amap_core_fluttify",
-      "rootUri": "../dependencies/amap_core_fluttify",
+      "rootUri": "file:///Users/Apple/.pub-cache/git/amap_map_fluttify-56392ed50cd3c7dc60070c4aaef173b14c3241a8/dependencies/amap_core_fluttify",
       "packageUri": "lib/",
       "languageVersion": "3.5"
     },
     {
       "name": "amap_location_fluttify",
-      "rootUri": "../dependencies/amap_location_fluttify",
+      "rootUri": "file:///Users/Apple/.pub-cache/git/amap_map_fluttify-56392ed50cd3c7dc60070c4aaef173b14c3241a8/dependencies/amap_location_fluttify",
       "packageUri": "lib/",
       "languageVersion": "3.5"
     },
     {
       "name": "amap_search_fluttify",
-      "rootUri": "../dependencies/amap_search_fluttify",
+      "rootUri": "file:///Users/Apple/.pub-cache/git/amap_map_fluttify-56392ed50cd3c7dc60070c4aaef173b14c3241a8/dependencies/amap_search_fluttify",
       "packageUri": "lib/",
       "languageVersion": "3.5"
     },
@@ -51,7 +51,7 @@
     },
     {
       "name": "core_location_fluttify",
-      "rootUri": "../dependencies/core_location_fluttify",
+      "rootUri": "file:///Users/Apple/.pub-cache/git/amap_map_fluttify-56392ed50cd3c7dc60070c4aaef173b14c3241a8/dependencies/core_location_fluttify",
       "packageUri": "lib/",
       "languageVersion": "3.5"
     },
@@ -87,7 +87,7 @@
     },
     {
       "name": "foundation_fluttify",
-      "rootUri": "../dependencies/foundation_fluttify",
+      "rootUri": "file:///Users/Apple/.pub-cache/git/amap_map_fluttify-56392ed50cd3c7dc60070c4aaef173b14c3241a8/dependencies/foundation_fluttify",
       "packageUri": "lib/",
       "languageVersion": "3.5"
     },
@@ -189,7 +189,7 @@
     },
     {
       "name": "uni_map_platform_interface",
-      "rootUri": "../dependencies/uni_map_platform_interface",
+      "rootUri": "file:///Users/Apple/.pub-cache/git/amap_map_fluttify-56392ed50cd3c7dc60070c4aaef173b14c3241a8/dependencies/uni_map_platform_interface",
       "packageUri": "lib/",
       "languageVersion": "3.5"
     },
@@ -266,7 +266,7 @@
       "languageVersion": "3.5"
     }
   ],
-  "generated": "2025-11-24T07:35:43.333630Z",
+  "generated": "2025-11-24T09:31:20.670078Z",
   "generator": "pub",
   "generatorVersion": "3.5.4",
   "flutterRoot": "file:///Users/Apple/fvm/versions/3.24.5",

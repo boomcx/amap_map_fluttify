@@ -1,0 +1,79 @@
+group 'me.yohom.amap_location_fluttify'
+version '1.0-SNAPSHOT'
+
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+        String storageUrl = System.env.FLUTTER_STORAGE_BASE_URL ?: "https://storage.googleapis.com"
+        maven {
+            url "$storageUrl/download.flutter.io"
+        }
+        maven { url "https://oss.sonatype.org/content/groups/public" }
+        maven { url "https://maven.aliyun.com/nexus/content/groups/public/" }
+        maven { url 'https://developer.huawei.com/repo/' }
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:8.1.0'
+    }
+}
+
+rootProject.allprojects {
+    repositories {
+        google()
+        mavenCentral()
+        String storageUrl = System.env.FLUTTER_STORAGE_BASE_URL ?: "https://storage.googleapis.com"
+        maven {
+            url "$storageUrl/download.flutter.io"
+        }
+        maven { url "https://oss.sonatype.org/content/groups/public" }
+        maven { url "https://maven.aliyun.com/nexus/content/groups/public/" }
+        maven { url 'https://developer.huawei.com/repo/' }
+    }
+}
+
+apply plugin: 'com.android.library'
+
+android {
+    compileSdk 34
+
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+        main.jniLibs.srcDir 'libs'
+    }
+    defaultConfig {
+        minSdkVersion 21
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    lint {
+        disable 'InvalidPackage'
+    }
+    compileOptions {
+        targetCompatibility JavaVersion.VERSION_17
+        sourceCompatibility JavaVersion.VERSION_17
+    }
+    packagingOptions {
+        merge 'res/values/values.xml'
+        merge 'AndroidManifest.xml'
+        merge 'R.txt'
+        merge 'classes.jar'
+        merge 'proguard.txt'
+    }
+    buildTypes {
+        release {
+            consumerProguardFiles "proguard-rules.pro"
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar', '*.aar'])
+    implementation 'androidx.annotation:annotation:1.8.0'
+    implementation 'androidx.appcompat:appcompat:1.7.0'
+    compileOnly rootProject.findProject(":foundation_fluttify")
+    // flutter plugin dependency
+    compileOnly rootProject.findProject(":amap_core_fluttify")
+    // sdk dependency
+    api 'com.amap.api:location:6.4.3'
+}

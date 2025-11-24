@@ -14,12 +14,18 @@ enum MAMapRectCorner {
 extension MAMapRectCornerToX on MAMapRectCorner {
   int toValue() {
     switch (this) {
-      case MAMapRectCorner.MAMapRectCornerTopLeft: return 1<<0;
-      case MAMapRectCorner.MAMapRectCornerTopRight: return 1<<1;
-      case MAMapRectCorner.MAMapRectCornerBottomLeft: return 1<<2;
-      case MAMapRectCorner.MAMapRectCornerBottomRight: return 1<<3;
-      case MAMapRectCorner.MAMapRectCornerAllCorners: return ~0;
-      default: return 0;
+      case MAMapRectCorner.MAMapRectCornerTopLeft:
+        return 1 << 0;
+      case MAMapRectCorner.MAMapRectCornerTopRight:
+        return 1 << 1;
+      case MAMapRectCorner.MAMapRectCornerBottomLeft:
+        return 1 << 2;
+      case MAMapRectCorner.MAMapRectCornerBottomRight:
+        return 1 << 3;
+      case MAMapRectCorner.MAMapRectCornerAllCorners:
+        return ~0;
+      default:
+        return 0;
     }
   }
 }
@@ -27,12 +33,18 @@ extension MAMapRectCornerToX on MAMapRectCorner {
 extension MAMapRectCornerFromX on int {
   MAMapRectCorner toMAMapRectCorner() {
     switch (this) {
-      case const(1<<0): return MAMapRectCorner.MAMapRectCornerTopLeft;
-      case const(1<<1): return MAMapRectCorner.MAMapRectCornerTopRight;
-      case const(1<<2): return MAMapRectCorner.MAMapRectCornerBottomLeft;
-      case const(1<<3): return MAMapRectCorner.MAMapRectCornerBottomRight;
-      case const(~0): return MAMapRectCorner.MAMapRectCornerAllCorners;
-      default: return MAMapRectCorner.values[this + 1<<0];
+      case (1 << 0):
+        return MAMapRectCorner.MAMapRectCornerTopLeft;
+      case (1 << 1):
+        return MAMapRectCorner.MAMapRectCornerTopRight;
+      case (1 << 2):
+        return MAMapRectCorner.MAMapRectCornerBottomLeft;
+      case (1 << 3):
+        return MAMapRectCorner.MAMapRectCornerBottomRight;
+      case (~0):
+        return MAMapRectCorner.MAMapRectCornerAllCorners;
+      default:
+        return MAMapRectCorner.values[this + 1 << 0];
     }
   }
 }

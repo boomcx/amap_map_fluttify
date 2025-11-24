@@ -24,6 +24,9 @@ allprojects {
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 
+// 应用 Flutter 插件以自动处理 Flutter embedding 依赖
+apply plugin: 'dev.flutter.flutter-plugin'
+
 android {
    compileSdk 34
 

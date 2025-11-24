@@ -1,10 +1,10 @@
 # This is a generated file; do not edit or check into version control.
-amap_core_fluttify=/Users/Apple/.pub-cache/hosted/pub.flutter-io.cn/amap_core_fluttify-0.17.0/
-amap_location_fluttify=/Users/Apple/.pub-cache/hosted/pub.flutter-io.cn/amap_location_fluttify-0.22.0/
-amap_map_fluttify=/Users/Apple/Desktop/amap/amap_map_fluttify/
-amap_search_fluttify=/Users/Apple/.pub-cache/hosted/pub.flutter-io.cn/amap_search_fluttify-0.18.0/
-core_location_fluttify=/Users/Apple/.pub-cache/hosted/pub.flutter-io.cn/core_location_fluttify-0.7.1/
-foundation_fluttify=/Users/Apple/.pub-cache/hosted/pub.flutter-io.cn/foundation_fluttify-0.13.0+1/
+amap_core_fluttify=/Users/Apple/Desktop/Pub/amap_map_fluttify/dependencies/amap_core_fluttify/
+amap_location_fluttify=/Users/Apple/Desktop/Pub/amap_map_fluttify/dependencies/amap_location_fluttify/
+amap_map_fluttify=/Users/Apple/Desktop/Pub/amap_map_fluttify/
+amap_search_fluttify=/Users/Apple/Desktop/Pub/amap_map_fluttify/dependencies/amap_search_fluttify/
+core_location_fluttify=/Users/Apple/Desktop/Pub/amap_map_fluttify/dependencies/core_location_fluttify/
+foundation_fluttify=/Users/Apple/Desktop/Pub/amap_map_fluttify/dependencies/foundation_fluttify/
 path_provider=/Users/Apple/.pub-cache/hosted/pub.flutter-io.cn/path_provider-2.1.5/
 path_provider_android=/Users/Apple/.pub-cache/hosted/pub.flutter-io.cn/path_provider_android-2.2.15/
 path_provider_foundation=/Users/Apple/.pub-cache/hosted/pub.flutter-io.cn/path_provider_foundation-2.4.1/

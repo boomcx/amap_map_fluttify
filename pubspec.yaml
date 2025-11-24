@@ -3,20 +3,26 @@ description: An `Amap` Map Component, Powered By `Fluttify` Compiler, A Dart Bin
 version: 2.0.2
 
 environment:
-  sdk: ">=2.12.0 <4.0.0"
-  flutter: ">=1.12.13"
+  sdk: ">=3.5.0 <4.0.0"
+  flutter: ">=3.24.0"
 
 dependencies:
   flutter:
     sdk: flutter
   
-  uni_map_platform_interface: ^0.7.0-rc.0
-  url_launcher: ^6.1.6
-  foundation_fluttify: ^0.13.0+1
-  core_location_fluttify: ^0.7.1
-  amap_core_fluttify: ^0.17.0
-  amap_search_fluttify: ^0.18.0
-  amap_location_fluttify: ^0.22.0
+  uni_map_platform_interface:
+    path: dependencies/uni_map_platform_interface
+  url_launcher: ^6.3.1
+  foundation_fluttify:
+    path: dependencies/foundation_fluttify
+  core_location_fluttify:
+    path: dependencies/core_location_fluttify
+  amap_core_fluttify:
+    path: dependencies/amap_core_fluttify
+  amap_search_fluttify:
+    path: dependencies/amap_search_fluttify
+  amap_location_fluttify:
+    path: dependencies/amap_location_fluttify
 
 dev_dependencies:
   flutter_test:

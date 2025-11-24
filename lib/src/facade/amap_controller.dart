@@ -2,12 +2,13 @@
 part of 'amap_view.widget.dart';
 
 /// 海量点点击回调签名
-typedef OnMultiPointClicked = Future<void> Function(
-  String id,
-  String title,
-  String snippet,
-  String object,
-);
+typedef OnMultiPointClicked =
+    Future<void> Function(
+      String id,
+      String title,
+      String snippet,
+      String object,
+    );
 
 /// 地图控制类
 class AmapController with WidgetsBindingObserver, IMapController {
@@ -33,8 +34,9 @@ class AmapController with WidgetsBindingObserver, IMapController {
 
   _AmapViewState? state;
 
-  final imageConfiguration =
-      ImageConfiguration(devicePixelRatio: ui.window.devicePixelRatio);
+  final imageConfiguration = ImageConfiguration(
+    devicePixelRatio: ui.window.devicePixelRatio,
+  );
 
   // iOS端的回调处理类
   MAMapViewDelegate? _iosMapDelegate;
@@ -150,8 +152,9 @@ class AmapController with WidgetsBindingObserver, IMapController {
 
           // 定位图标
           if (option.iconProvider != null) {
-            final imageData =
-                await option.iconProvider!.toImageData(imageConfiguration);
+            final imageData = await option.iconProvider!.toImageData(
+              imageConfiguration,
+            );
             final bitmap = await android_graphics_Bitmap.create(imageData);
             final bitmapDescriptor =
                 await com_amap_api_maps_model_BitmapDescriptorFactory
@@ -169,11 +172,13 @@ class AmapController with WidgetsBindingObserver, IMapController {
             await locationStyle.myLocationIcon(bitmapDescriptor);
           }*/
           // 边框颜色
-          await locationStyle
-              .strokeColor(Int32List.fromList([option.strokeColor.value])[0]);
+          await locationStyle.strokeColor(
+            Int32List.fromList([option.strokeColor.value])[0],
+          );
           // 填充颜色
-          await locationStyle
-              .radiusFillColor(Int32List.fromList([option.fillColor.value])[0]);
+          await locationStyle.radiusFillColor(
+            Int32List.fromList([option.fillColor.value])[0],
+          );
           // 边框宽度
           await locationStyle.strokeWidth(option.strokeWidth);
           // 锚点
@@ -193,8 +198,10 @@ class AmapController with WidgetsBindingObserver, IMapController {
         if (option.show) {
           if (option.interval != Duration.zero) {
             await _locateSubscription?.cancel();
-            _locateSubscription =
-                Stream.periodic(option.interval, (_) => _).listen((_) {
+            _locateSubscription = Stream.periodic(
+              option.interval,
+              (time) => time,
+            ).listen((_) {
               if (option.myLocationType == MyLocationType.Follow) {
                 iosController!.setUserTrackingMode_animated(
                   MAUserTrackingMode.MAUserTrackingModeFollow,
@@ -256,8 +263,9 @@ class AmapController with WidgetsBindingObserver, IMapController {
 
           // 定位图标
           if (option.iconProvider != null) {
-            final imageData =
-                await option.iconProvider!.toImageData(imageConfiguration);
+            final imageData = await option.iconProvider!.toImageData(
+              imageConfiguration,
+            );
             final bitmap = await UIImage.create(imageData);
             await style.set_image(bitmap);
           }
@@ -389,12 +397,16 @@ class AmapController with WidgetsBindingObserver, IMapController {
       ios: (pool) async {
         switch (language) {
           case Language.Chinese:
-            await iosController!
-                .performSelectorWithObject__('setMapLanguage:', 0);
+            await iosController!.performSelectorWithObject__(
+              'setMapLanguage:',
+              0,
+            );
             break;
           case Language.English:
-            await iosController!
-                .performSelectorWithObject__('setMapLanguage:', 1);
+            await iosController!.performSelectorWithObject__(
+              'setMapLanguage:',
+              1,
+            );
             break;
         }
       },
@@ -579,11 +591,13 @@ class AmapController with WidgetsBindingObserver, IMapController {
     await platform(
       android: (pool) async {
         final map = await androidController!.getMap();
-        final cameraUpdate =
-            await com_amap_api_maps_CameraUpdateFactory.zoomTo(level);
+        final cameraUpdate = await com_amap_api_maps_CameraUpdateFactory.zoomTo(
+          level,
+        );
         if (animated) {
-          await map!
-              .animateCamera__com_amap_api_maps_CameraUpdate(cameraUpdate!);
+          await map!.animateCamera__com_amap_api_maps_CameraUpdate(
+            cameraUpdate!,
+          );
         } else {
           await map!.moveCamera(cameraUpdate!);
         }
@@ -655,8 +669,9 @@ class AmapController with WidgetsBindingObserver, IMapController {
         final cameraUpdate =
             await com_amap_api_maps_CameraUpdateFactory.zoomIn();
         if (animated) {
-          await map!
-              .animateCamera__com_amap_api_maps_CameraUpdate(cameraUpdate!);
+          await map!.animateCamera__com_amap_api_maps_CameraUpdate(
+            cameraUpdate!,
+          );
         } else {
           await map!.moveCamera(cameraUpdate!);
         }
@@ -679,8 +694,9 @@ class AmapController with WidgetsBindingObserver, IMapController {
         final cameraUpdate =
             await com_amap_api_maps_CameraUpdateFactory.zoomOut();
         if (animated) {
-          await map!
-              .animateCamera__com_amap_api_maps_CameraUpdate(cameraUpdate!);
+          await map!.animateCamera__com_amap_api_maps_CameraUpdate(
+            cameraUpdate!,
+          );
         } else {
           await map!.moveCamera(cameraUpdate!);
         }
@@ -724,14 +740,19 @@ class AmapController with WidgetsBindingObserver, IMapController {
         final finalTilt = tilt ?? (await camera!.get_tilt())!;
         final cameraPosition = await com_amap_api_maps_model_CameraPosition
             .create__com_amap_api_maps_model_LatLng__float__float__float(
-                latLng, finalZoomLevel, finalTilt, finalBearing);
+              latLng,
+              finalZoomLevel,
+              finalTilt,
+              finalBearing,
+            );
 
         final cameraUpdate = await com_amap_api_maps_CameraUpdateFactory
             .newCameraPosition(cameraPosition);
 
         if (animated) {
-          await map
-              .animateCamera__com_amap_api_maps_CameraUpdate(cameraUpdate!);
+          await map.animateCamera__com_amap_api_maps_CameraUpdate(
+            cameraUpdate!,
+          );
         } else {
           await map.moveCamera(cameraUpdate!);
         }
@@ -827,9 +848,9 @@ class AmapController with WidgetsBindingObserver, IMapController {
           final icon =
               await com_amap_api_maps_model_BitmapDescriptorFactory_Batch
                   .fromBitmap_batch(bitmap!);
-          await markerOption.icons(icon
-              .whereType<com_amap_api_maps_model_BitmapDescriptor>()
-              .toList());
+          await markerOption.icons(
+            icon.whereType<com_amap_api_maps_model_BitmapDescriptor>().toList(),
+          );
           await markerOption.period(240 ~/ (option.animationFps ?? 30));
 
           pool
@@ -838,8 +859,9 @@ class AmapController with WidgetsBindingObserver, IMapController {
         }
         // 普通图片
         else if (option.iconProvider != null) {
-          Uint8List iconData =
-              await option.iconProvider!.toImageData(imageConfiguration);
+          Uint8List iconData = await option.iconProvider!.toImageData(
+            imageConfiguration,
+          );
 
           final bitmap = await android_graphics_Bitmap.create(iconData);
           final icon = await com_amap_api_maps_model_BitmapDescriptorFactory
@@ -897,8 +919,10 @@ class AmapController with WidgetsBindingObserver, IMapController {
         // 创建marker
         final annotation = await MAPointAnnotation.create__();
 
-        final coordinate =
-            await CLLocationCoordinate2D.create(latitude, longitude);
+        final coordinate = await CLLocationCoordinate2D.create(
+          latitude,
+          longitude,
+        );
 
         // 设置经纬度
         await annotation.set_coordinate(coordinate);
@@ -927,8 +951,9 @@ class AmapController with WidgetsBindingObserver, IMapController {
         }
         // 普通图片
         else if (option.iconProvider != null) {
-          Uint8List iconData =
-              await option.iconProvider!.toImageData(imageConfiguration);
+          Uint8List iconData = await option.iconProvider!.toImageData(
+            imageConfiguration,
+          );
 
           final icon = await UIImage.create(iconData);
 
@@ -1003,12 +1028,14 @@ class AmapController with WidgetsBindingObserver, IMapController {
       ...await Future.wait([
         for (final option in options)
           if (option.iconProvider != null)
-            option.iconProvider!.toImageData(imageConfiguration)
+            option.iconProvider!.toImageData(imageConfiguration),
       ]),
-      ...?await state!.widgetToImageData(options
-          .where((element) => element.widget != null)
-          .map((e) => e.widget!)
-          .toList()),
+      ...?await state!.widgetToImageData(
+        options
+            .where((element) => element.widget != null)
+            .map((e) => e.widget!)
+            .toList(),
+      ),
     ];
 
     return platform(
@@ -1036,14 +1063,17 @@ class AmapController with WidgetsBindingObserver, IMapController {
         await markerOptionBatch.visible_batch(visibleBatch);
         // 图片
         if (iconDataBatch.isNotEmpty) {
-          final bitmapBatch =
-              await android_graphics_Bitmap.create_batch(iconDataBatch);
+          final bitmapBatch = await android_graphics_Bitmap.create_batch(
+            iconDataBatch,
+          );
           final iconBatch =
               await com_amap_api_maps_model_BitmapDescriptorFactory_Batch
                   .fromBitmap_batch(bitmapBatch!);
-          await markerOptionBatch.icon_batch(iconBatch
-              .whereType<com_amap_api_maps_model_BitmapDescriptor>()
-              .toList());
+          await markerOptionBatch.icon_batch(
+            iconBatch
+                .whereType<com_amap_api_maps_model_BitmapDescriptor>()
+                .toList(),
+          );
           pool
             ..addAll(bitmapBatch)
             ..addAll(iconBatch);
@@ -1068,12 +1098,15 @@ class AmapController with WidgetsBindingObserver, IMapController {
         await iosController!.set_delegate(_iosMapDelegate!);
 
         // 创建marker
-        final annotationBatch =
-            await MAPointAnnotation.create_batch__(options.length);
+        final annotationBatch = await MAPointAnnotation.create_batch__(
+          options.length,
+        );
 
         // 经纬度列表
-        final coordinateBatch =
-            await CLLocationCoordinate2D.create_batch(latBatch, lngBatch);
+        final coordinateBatch = await CLLocationCoordinate2D.create_batch(
+          latBatch,
+          lngBatch,
+        );
         // 设置经纬度
         await annotationBatch.set_coordinate_batch(coordinateBatch);
         // 设置标题
@@ -1105,7 +1138,7 @@ class AmapController with WidgetsBindingObserver, IMapController {
         pool.addAll(coordinateBatch);
         return [
           for (int i = 0; i < options.length; i++)
-            Marker.ios(annotationBatch[i], iosController)
+            Marker.ios(annotationBatch[i], iosController),
         ];
       },
     );
@@ -1160,7 +1193,9 @@ class AmapController with WidgetsBindingObserver, IMapController {
         final projection = await map!.getProjection();
 
         final androidPoint = await android_graphics_Point.create(
-            point.x.toInt(), point.y.toInt());
+          point.x.toInt(),
+          point.y.toInt(),
+        );
 
         final latLng = await projection!.fromScreenLocation(androidPoint);
 
@@ -1174,10 +1209,14 @@ class AmapController with WidgetsBindingObserver, IMapController {
         );
       },
       ios: (pool) async {
-        final cgPoint =
-            await CGPoint.create(point.x.toDouble(), point.y.toDouble());
-        final coord2d = await iosController!
-            .convertPoint_toCoordinateFromView(cgPoint, iosController!);
+        final cgPoint = await CGPoint.create(
+          point.x.toDouble(),
+          point.y.toDouble(),
+        );
+        final coord2d = await iosController!.convertPoint_toCoordinateFromView(
+          cgPoint,
+          iosController!,
+        );
 
         pool
           ..add(cgPoint)
@@ -1211,9 +1250,13 @@ class AmapController with WidgetsBindingObserver, IMapController {
       },
       ios: (pool) async {
         final latLng = await CLLocationCoordinate2D.create(
-            coordinate.latitude, coordinate.longitude);
-        final point = await iosController!
-            .convertCoordinate_toPointToView(latLng, iosController!);
+          coordinate.latitude,
+          coordinate.longitude,
+        );
+        final point = await iosController!.convertCoordinate_toPointToView(
+          latLng,
+          iosController!,
+        );
 
         pool
           ..add(latLng)
@@ -1233,8 +1276,9 @@ class AmapController with WidgetsBindingObserver, IMapController {
     final latitudeBatch = option.coordinateList.map((e) => e.latitude).toList();
     final longitudeBatch =
         option.coordinateList.map((e) => e.longitude).toList();
-    final textureData =
-        await option.textureProvider?.toImageData(imageConfiguration);
+    final textureData = await option.textureProvider?.toImageData(
+      imageConfiguration,
+    );
     return platform(
       android: (pool) async {
         final map = await androidController!.getMap();
@@ -1242,9 +1286,9 @@ class AmapController with WidgetsBindingObserver, IMapController {
         // 构造折线点
         List<com_amap_api_maps_model_LatLng> latLngList =
             await com_amap_api_maps_model_LatLng.create_batch__double__double(
-          latitudeBatch,
-          longitudeBatch,
-        );
+              latitudeBatch,
+              longitudeBatch,
+            );
 
         // 构造折线参数
         final polylineOptions =
@@ -1254,8 +1298,9 @@ class AmapController with WidgetsBindingObserver, IMapController {
         await polylineOptions.addAll(latLngList);
         await polylineOptions.width(option.width);
         // 颜色
-        await polylineOptions
-            .color(Int32List.fromList([option.strokeColor.value])[0]);
+        await polylineOptions.color(
+          Int32List.fromList([option.strokeColor.value])[0],
+        );
         // 自定义贴图
         if (textureData != null) {
           final bitmap = await android_graphics_Bitmap.create(textureData);
@@ -1271,15 +1316,18 @@ class AmapController with WidgetsBindingObserver, IMapController {
         // 线段始末端样式, 由于两端的枚举顺序是一样的, 所以这里直接从索引获取枚举
         if (option.lineCapType != null) {
           await polylineOptions.lineCapType(
-            com_amap_api_maps_model_PolylineOptions_LineCapType
-                .values[option.lineCapType!.index],
+            com_amap_api_maps_model_PolylineOptions_LineCapType.values[option
+                .lineCapType!
+                .index],
           );
         }
         // 线段连接处样式, 由于两端的枚举顺序是一样的, 所以这里直接从索引获取枚举
         if (option.lineJoinType != null) {
           await polylineOptions.lineJoinType(
-              com_amap_api_maps_model_PolylineOptions_LineJoinType
-                  .values[option.lineJoinType!.index]);
+            com_amap_api_maps_model_PolylineOptions_LineJoinType.values[option
+                .lineJoinType!
+                .index],
+          );
         }
         // 是否虚线
         if (option.dashType != null) {
@@ -1287,13 +1335,13 @@ class AmapController with WidgetsBindingObserver, IMapController {
           switch (option.dashType!) {
             case DashType.Square:
               await polylineOptions.setDottedLineType(
-                  com_amap_api_maps_model_PolylineOptions
-                      .DOTTEDLINE_TYPE_SQUARE);
+                com_amap_api_maps_model_PolylineOptions.DOTTEDLINE_TYPE_SQUARE,
+              );
               break;
             case DashType.Circle:
               await polylineOptions.setDottedLineType(
-                  com_amap_api_maps_model_PolylineOptions
-                      .DOTTEDLINE_TYPE_CIRCLE);
+                com_amap_api_maps_model_PolylineOptions.DOTTEDLINE_TYPE_CIRCLE,
+              );
               break;
           }
         }
@@ -1313,11 +1361,15 @@ class AmapController with WidgetsBindingObserver, IMapController {
         // 构造折线点
         List<CLLocationCoordinate2D> latLngList =
             await CLLocationCoordinate2D.create_batch(
-                latitudeBatch, longitudeBatch);
+              latitudeBatch,
+              longitudeBatch,
+            );
 
         // 构造折线参数
         final polyline = await MAPolyline.polylineWithCoordinates_count(
-            latLngList, latLngList.length);
+          latLngList,
+          latLngList.length,
+        );
 
         // 宽度和颜色需要设置到STACK里去
         final pixelRatio = MediaQuery.of(state!.context).devicePixelRatio;
@@ -1370,9 +1422,9 @@ class AmapController with WidgetsBindingObserver, IMapController {
         // 构造折线点
         List<com_amap_api_maps_model_LatLng> latLngList =
             await com_amap_api_maps_model_LatLng.create_batch__double__double(
-          latitudeBatch,
-          longitudeBatch,
-        );
+              latitudeBatch,
+              longitudeBatch,
+            );
 
         // 构造参数
         final polygonOptions =
@@ -1383,11 +1435,13 @@ class AmapController with WidgetsBindingObserver, IMapController {
         // 宽度
         await polygonOptions.strokeWidth(option.width);
         // 边框颜色
-        await polygonOptions
-            .strokeColor(Int32List.fromList([option.strokeColor.value])[0]);
+        await polygonOptions.strokeColor(
+          Int32List.fromList([option.strokeColor.value])[0],
+        );
         // 填充颜色
-        await polygonOptions
-            .fillColor(Int32List.fromList([option.fillColor.value])[0]);
+        await polygonOptions.fillColor(
+          Int32List.fromList([option.fillColor.value])[0],
+        );
         if (option.zIndex != null) {
           await polygonOptions.zIndex(option.zIndex!);
         }
@@ -1408,11 +1462,15 @@ class AmapController with WidgetsBindingObserver, IMapController {
         // 构造折线点
         List<CLLocationCoordinate2D> latLngList =
             await CLLocationCoordinate2D.create_batch(
-                latitudeBatch, longitudeBatch);
+              latitudeBatch,
+              longitudeBatch,
+            );
 
         // 构造折线参数
         final polygon = await MAPolygon.polygonWithCoordinates_count(
-            latLngList, latLngList.length);
+          latLngList,
+          latLngList.length,
+        );
 
         final pixelRatio = MediaQuery.of(state!.context).devicePixelRatio;
         await polygon!.addJsonableProperty__(1, option.width / pixelRatio);
@@ -1443,11 +1501,11 @@ class AmapController with WidgetsBindingObserver, IMapController {
         final map = await androidController!.getMap();
 
         // 构造点
-        final latLng =
-            await com_amap_api_maps_model_LatLng.create__double__double(
-          option.center.latitude,
-          option.center.longitude,
-        );
+        final latLng = await com_amap_api_maps_model_LatLng
+            .create__double__double(
+              option.center.latitude,
+              option.center.longitude,
+            );
 
         // 构造参数
         final circleOptions =
@@ -1460,11 +1518,13 @@ class AmapController with WidgetsBindingObserver, IMapController {
         // 宽度
         await circleOptions.strokeWidth(option.width);
         // 边框颜色
-        await circleOptions
-            .strokeColor(Int32List.fromList([option.strokeColor.value])[0]);
+        await circleOptions.strokeColor(
+          Int32List.fromList([option.strokeColor.value])[0],
+        );
         // 填充颜色
-        await circleOptions
-            .fillColor(Int32List.fromList([option.fillColor.value])[0]);
+        await circleOptions.fillColor(
+          Int32List.fromList([option.fillColor.value])[0],
+        );
 
         // 设置参数
         final circle = await map!.addCircle(circleOptions);
@@ -1573,26 +1633,34 @@ class AmapController with WidgetsBindingObserver, IMapController {
         _iosMapDelegate ??= await MAMapViewDelegate.anonymous__();
         await iosController!.set_delegate(
           _iosMapDelegate!
-            ..mapView_annotationView_didChangeDragState_fromOldState =
-                (_, view, newState, oldState) async {
+            ..mapView_annotationView_didChangeDragState_fromOldState = (
+              _,
+              view,
+              newState,
+              oldState,
+            ) async {
               final annotation = AmapMapFluttifyIOSAs<MAPointAnnotation>(
-                  await view!.get_annotation());
+                await view!.get_annotation(),
+              );
               if (newState ==
                   MAAnnotationViewDragState.MAAnnotationViewDragStateStarting) {
-                await onMarkerDragStart
-                    ?.call(Marker.ios(annotation, iosController));
+                await onMarkerDragStart?.call(
+                  Marker.ios(annotation, iosController),
+                );
               }
 
               if (newState ==
                   MAAnnotationViewDragState.MAAnnotationViewDragStateDragging) {
-                await onMarkerDragging
-                    ?.call(Marker.ios(annotation, iosController));
+                await onMarkerDragging?.call(
+                  Marker.ios(annotation, iosController),
+                );
               }
 
               if (newState ==
                   MAAnnotationViewDragState.MAAnnotationViewDragStateEnding) {
-                await onMarkerDragEnd
-                    ?.call(Marker.ios(annotation, iosController));
+                await onMarkerDragEnd?.call(
+                  Marker.ios(annotation, iosController),
+                );
               }
             },
         );
@@ -1694,27 +1762,31 @@ class AmapController with WidgetsBindingObserver, IMapController {
             ..onCameraChange = (position) async {
               final location = await position!.get_target();
               if (onMapMoving != null && _moveStarted) {
-                await onMapMoving(MapMove(
-                  coordinate: LatLng(
-                    await location!.get_latitude() ?? 0,
-                    await location.get_longitude() ?? 0,
+                await onMapMoving(
+                  MapMove(
+                    coordinate: LatLng(
+                      await location!.get_latitude() ?? 0,
+                      await location.get_longitude() ?? 0,
+                    ),
+                    zoom: await position.get_zoom(),
+                    tilt: await position.get_tilt(),
+                    bearing: await position.get_bearing(),
+                    isAbroad: await position.get_isAbroad(),
                   ),
-                  zoom: await position.get_zoom(),
-                  tilt: await position.get_tilt(),
-                  bearing: await position.get_bearing(),
-                  isAbroad: await position.get_isAbroad(),
-                ));
+                );
               } else if (onMapMoveStart != null && !_moveStarted) {
-                await onMapMoveStart(MapMove(
-                  coordinate: LatLng(
-                    await location!.get_latitude() ?? 0,
-                    await location.get_longitude() ?? 0,
+                await onMapMoveStart(
+                  MapMove(
+                    coordinate: LatLng(
+                      await location!.get_latitude() ?? 0,
+                      await location.get_longitude() ?? 0,
+                    ),
+                    zoom: await position.get_zoom(),
+                    bearing: await position.get_bearing(),
+                    tilt: await position.get_tilt(),
+                    isAbroad: await position.get_isAbroad(),
                   ),
-                  zoom: await position.get_zoom(),
-                  bearing: await position.get_bearing(),
-                  tilt: await position.get_tilt(),
-                  isAbroad: await position.get_isAbroad(),
-                ));
+                );
                 // 由于ios端只有`开始`和`结束`的回调, 而android这边是只要改变就有回调, 这里回调过
                 // 第一次之后就把标记记为已经触发, 在移动结束后再置回来
                 _moveStarted = true;
@@ -1726,16 +1798,18 @@ class AmapController with WidgetsBindingObserver, IMapController {
             ..onCameraChangeFinish = (position) async {
               if (onMapMoveEnd != null) {
                 final location = await position!.get_target();
-                await onMapMoveEnd(MapMove(
-                  coordinate: LatLng(
-                    await location!.get_latitude() ?? 0,
-                    await location.get_longitude() ?? 0,
+                await onMapMoveEnd(
+                  MapMove(
+                    coordinate: LatLng(
+                      await location!.get_latitude() ?? 0,
+                      await location.get_longitude() ?? 0,
+                    ),
+                    zoom: await position.get_zoom(),
+                    bearing: await position.get_bearing(),
+                    tilt: await position.get_tilt(),
+                    isAbroad: await position.get_isAbroad(),
                   ),
-                  zoom: await position.get_zoom(),
-                  bearing: await position.get_bearing(),
-                  tilt: await position.get_tilt(),
-                  isAbroad: await position.get_isAbroad(),
-                ));
+                );
               }
               // 无论有没有设置过回调, 这里都给它置回来
               _moveStarted = false;
@@ -1746,46 +1820,58 @@ class AmapController with WidgetsBindingObserver, IMapController {
         _iosMapDelegate ??= await MAMapViewDelegate.anonymous__();
         await iosController!.set_delegate(
           _iosMapDelegate!
-            ..mapView_regionWillChangeAnimated_wasUserAction =
-                (mapView, animated, userAction) async {
+            ..mapView_regionWillChangeAnimated_wasUserAction = (
+              mapView,
+              animated,
+              userAction,
+            ) async {
               final location = await mapView!.get_centerCoordinate();
-              await onMapMoveStart?.call(MapMove(
-                coordinate: LatLng(
-                  await location!.latitude ?? 0,
-                  await location.longitude ?? 0,
+              await onMapMoveStart?.call(
+                MapMove(
+                  coordinate: LatLng(
+                    await location!.latitude ?? 0,
+                    await location.longitude ?? 0,
+                  ),
+                  zoom: await mapView.get_zoomLevel(),
+                  tilt: await mapView.get_cameraDegree(),
+                  bearing: await mapView.get_rotationDegree(),
+                  isAbroad: await mapView.get_isAbroad(),
                 ),
-                zoom: await mapView.get_zoomLevel(),
-                tilt: await mapView.get_cameraDegree(),
-                bearing: await mapView.get_rotationDegree(),
-                isAbroad: await mapView.get_isAbroad(),
-              ));
+              );
             }
             ..mapViewRegionChanged = (mapView) async {
               final location = await mapView!.get_centerCoordinate();
-              await onMapMoving?.call(MapMove(
-                coordinate: LatLng(
-                  await location!.latitude ?? 0,
-                  await location.longitude ?? 0,
+              await onMapMoving?.call(
+                MapMove(
+                  coordinate: LatLng(
+                    await location!.latitude ?? 0,
+                    await location.longitude ?? 0,
+                  ),
+                  zoom: await mapView.get_zoomLevel(),
+                  tilt: await mapView.get_cameraDegree(),
+                  bearing: await mapView.get_rotationDegree(),
+                  isAbroad: await mapView.get_isAbroad(),
                 ),
-                zoom: await mapView.get_zoomLevel(),
-                tilt: await mapView.get_cameraDegree(),
-                bearing: await mapView.get_rotationDegree(),
-                isAbroad: await mapView.get_isAbroad(),
-              ));
+              );
             }
-            ..mapView_regionDidChangeAnimated_wasUserAction =
-                (mapView, animated, userAction) async {
+            ..mapView_regionDidChangeAnimated_wasUserAction = (
+              mapView,
+              animated,
+              userAction,
+            ) async {
               final location = await mapView!.get_centerCoordinate();
-              await onMapMoveEnd?.call(MapMove(
-                coordinate: LatLng(
-                  await location!.latitude ?? 0,
-                  await location.longitude ?? 0,
+              await onMapMoveEnd?.call(
+                MapMove(
+                  coordinate: LatLng(
+                    await location!.latitude ?? 0,
+                    await location.longitude ?? 0,
+                  ),
+                  zoom: await mapView.get_zoomLevel(),
+                  tilt: await mapView.get_cameraDegree(),
+                  bearing: await mapView.get_rotationDegree(),
+                  isAbroad: await mapView.get_isAbroad(),
                 ),
-                zoom: await mapView.get_zoomLevel(),
-                tilt: await mapView.get_cameraDegree(),
-                bearing: await mapView.get_rotationDegree(),
-                isAbroad: await mapView.get_isAbroad(),
-              ));
+              );
             },
         );
       },
@@ -1831,13 +1917,13 @@ class AmapController with WidgetsBindingObserver, IMapController {
         final completer = Completer<Uint8List>();
 
         final rect = await iosController!.frame;
-        await iosController!.takeSnapshotInRect_withCompletionBlock(
-          rect,
-          (image, state) async {
-            completer.complete((await image!.data)!);
-            pool.add(image);
-          },
-        );
+        await iosController!.takeSnapshotInRect_withCompletionBlock(rect, (
+          image,
+          state,
+        ) async {
+          completer.complete((await image!.data)!);
+          pool.add(image);
+        });
 
         pool.add(rect);
         return completer.future;
@@ -1861,7 +1947,9 @@ class AmapController with WidgetsBindingObserver, IMapController {
 
         final latLngBounds = await com_amap_api_maps_model_LatLngBounds
             .create__com_amap_api_maps_model_LatLng__com_amap_api_maps_model_LatLng(
-                southWestPoint, northEastPoint);
+              southWestPoint,
+              northEastPoint,
+            );
 
         await map!.setMapStatusLimits(latLngBounds);
 
@@ -1899,8 +1987,9 @@ class AmapController with WidgetsBindingObserver, IMapController {
       android: (pool) async {
         final map = await androidController!.getMap();
 
-        final listener = await com_amap_api_maps_AMap_OnInfoWindowClickListener
-            .anonymous__();
+        final listener =
+            await com_amap_api_maps_AMap_OnInfoWindowClickListener
+                .anonymous__();
         await map!.setOnInfoWindowClickListener(
           listener
             ..onInfoWindowClick = (marker) async {
@@ -1939,7 +2028,10 @@ class AmapController with WidgetsBindingObserver, IMapController {
         final options =
             await com_amap_api_maps_model_TileOverlayOptions.create__();
         final provider = await com_amap_api_maps_model_UrlTileProvider_X.create(
-            width, height, urlTemplate);
+          width,
+          height,
+          urlTemplate,
+        );
         await options.tileProvider(provider);
         await options.diskCacheEnabled(true);
         await options.diskCacheSize(100000);
@@ -2002,8 +2094,9 @@ class AmapController with WidgetsBindingObserver, IMapController {
         final height = await frame.height;
 
         // 去掉默认的弹窗
-        final annotationView =
-            await iosController!.viewForAnnotation(marker.iosModel!);
+        final annotationView = await iosController!.viewForAnnotation(
+          marker.iosModel!,
+        );
         await annotationView?.set_canShowCallout(false);
         // 由于默认偏移量是0, 这里根据弹窗view设置一下偏移量
         await annotationView?.set_calloutOffset(
@@ -2031,8 +2124,9 @@ class AmapController with WidgetsBindingObserver, IMapController {
   /// 添加图片覆盖物
   @override
   Future<IGroundOverlay> addGroundOverlay(GroundOverlayOption option) async {
-    final imageData = await option.imageProvider
-        .toImageData(createLocalImageConfiguration(state!.context));
+    final imageData = await option.imageProvider.toImageData(
+      createLocalImageConfiguration(state!.context),
+    );
     return platform(
       android: (pool) async {
         final map = await androidController!.getMap();
@@ -2041,16 +2135,22 @@ class AmapController with WidgetsBindingObserver, IMapController {
             await com_amap_api_maps_model_GroundOverlayOptions.create__();
 
         // 创建图片边界
-        final southWestPoint =
-            await com_amap_api_maps_model_LatLng.create__double__double(
-                option.southWest.latitude, option.southWest.longitude);
-        final northEastPoint =
-            await com_amap_api_maps_model_LatLng.create__double__double(
-                option.northEast.latitude, option.northEast.longitude);
+        final southWestPoint = await com_amap_api_maps_model_LatLng
+            .create__double__double(
+              option.southWest.latitude,
+              option.southWest.longitude,
+            );
+        final northEastPoint = await com_amap_api_maps_model_LatLng
+            .create__double__double(
+              option.northEast.latitude,
+              option.northEast.longitude,
+            );
 
         final bounds = await com_amap_api_maps_model_LatLngBounds
             .create__com_amap_api_maps_model_LatLng__com_amap_api_maps_model_LatLng(
-                southWestPoint, northEastPoint);
+              southWestPoint,
+              northEastPoint,
+            );
         await groundOverlayOption.positionFromBounds(bounds);
 
         // 创建图片
@@ -2082,12 +2182,16 @@ class AmapController with WidgetsBindingObserver, IMapController {
           option.northEast.latitude,
           option.northEast.longitude,
         );
-        final bounds =
-            await MACoordinateBoundsMake(northEastPoint, southWestPoint);
+        final bounds = await MACoordinateBoundsMake(
+          northEastPoint,
+          southWestPoint,
+        );
 
         final bitmap = await UIImage.create(imageData);
-        final overlay =
-            await MAGroundOverlay.groundOverlayWithBounds_icon(bounds!, bitmap);
+        final overlay = await MAGroundOverlay.groundOverlayWithBounds_icon(
+          bounds!,
+          bitmap,
+        );
 
         // 添加热力图
         await iosController!.addOverlay(overlay!);
@@ -2118,15 +2222,20 @@ class AmapController with WidgetsBindingObserver, IMapController {
                 .create__();
         List<com_amap_api_maps_model_LatLng> latLngList = [];
         for (final latLng in option.coordinateList) {
-          latLngList.add(await com_amap_api_maps_model_LatLng
-              .create__double__double(latLng.latitude, latLng.longitude));
+          latLngList.add(
+            await com_amap_api_maps_model_LatLng.create__double__double(
+              latLng.latitude,
+              latLng.longitude,
+            ),
+          );
         }
         await builder.data(latLngList);
         if (option.gradient != null) {
           await builder.gradient(
             await com_amap_api_maps_model_GradientX.create(
               Int32List.fromList(
-                  option.gradient!.colors.map((e) => e.value).toList()),
+                option.gradient!.colors.map((e) => e.value).toList(),
+              ),
               Float64List.fromList(option.gradient!.stops!),
             ),
           );
@@ -2179,13 +2288,10 @@ class AmapController with WidgetsBindingObserver, IMapController {
         await overlay.set_data(nodeList);
         if (option.gradient != null) {
           final gradient = await MAHeatMapGradient.create__(init: false);
-          await gradient.initWithColor_andWithStartPoints(
-            <UIColor>[
-              for (final color in option.gradient!.colors)
-                await UIColor.create(color)
-            ],
-            option.gradient!.stops!,
-          );
+          await gradient.initWithColor_andWithStartPoints(<UIColor>[
+            for (final color in option.gradient!.colors)
+              await UIColor.create(color),
+          ], option.gradient!.stops!);
           await overlay.set_gradient(gradient);
 
           // if (option.gradient.radius != null) {
@@ -2239,21 +2345,24 @@ class AmapController with WidgetsBindingObserver, IMapController {
         // 可视区域矩形
         final rect = await com_amap_api_maps_model_LatLngBounds
             .create__com_amap_api_maps_model_LatLng__com_amap_api_maps_model_LatLng(
-                southWest, northEast);
+              southWest,
+              northEast,
+            );
 
         // 更新对象 android端由于单位是像素, 所以这里要乘以当前设备的像素密度
-        final cameraUpdate =
-            await com_amap_api_maps_CameraUpdateFactory.newLatLngBoundsRect(
-          rect,
-          (padding.left.toInt() * ui.window.devicePixelRatio).toInt(),
-          (padding.right.toInt() * ui.window.devicePixelRatio).toInt(),
-          (padding.top.toInt() * ui.window.devicePixelRatio).toInt(),
-          (padding.bottom.toInt() * ui.window.devicePixelRatio).toInt(),
-        );
+        final cameraUpdate = await com_amap_api_maps_CameraUpdateFactory
+            .newLatLngBoundsRect(
+              rect,
+              (padding.left.toInt() * ui.window.devicePixelRatio).toInt(),
+              (padding.right.toInt() * ui.window.devicePixelRatio).toInt(),
+              (padding.top.toInt() * ui.window.devicePixelRatio).toInt(),
+              (padding.bottom.toInt() * ui.window.devicePixelRatio).toInt(),
+            );
 
         if (animated) {
-          await map!
-              .animateCamera__com_amap_api_maps_CameraUpdate(cameraUpdate!);
+          await map!.animateCamera__com_amap_api_maps_CameraUpdate(
+            cameraUpdate!,
+          );
         } else {
           await map!.moveCamera(cameraUpdate!);
         }
@@ -2394,8 +2503,9 @@ class AmapController with WidgetsBindingObserver, IMapController {
       android: (pool) async {
         final map = await androidController!.getMap();
 
-        final listener = await com_amap_api_maps_AMap_OnMultiPointClickListener
-            .anonymous__();
+        final listener =
+            await com_amap_api_maps_AMap_OnMultiPointClickListener
+                .anonymous__();
         await map!.setOnMultiPointClickListener(
           listener
             ..onPointClick = (point) async {
@@ -2438,8 +2548,9 @@ class AmapController with WidgetsBindingObserver, IMapController {
   ) async {
     final latitudeBatch = option.path.map((e) => e.latitude).toList();
     final longitudeBatch = option.path.map((e) => e.longitude).toList();
-    final iconData = await option.iconProvider
-        .toImageData(createLocalImageConfiguration(state!.context));
+    final iconData = await option.iconProvider.toImageData(
+      createLocalImageConfiguration(state!.context),
+    );
     return platform(
       android: (pool) async {
         // 获取地图
@@ -2452,8 +2563,9 @@ class AmapController with WidgetsBindingObserver, IMapController {
         // 创建marker的图标
         final bitmap = await android_graphics_Bitmap.create(iconData);
         final bitmapDescriptor =
-            await com_amap_api_maps_model_BitmapDescriptorFactory
-                .fromBitmap(bitmap);
+            await com_amap_api_maps_model_BitmapDescriptorFactory.fromBitmap(
+              bitmap,
+            );
 
         // 设置图标
         await marker.setDescriptor(bitmapDescriptor!);
@@ -2485,7 +2597,9 @@ class AmapController with WidgetsBindingObserver, IMapController {
 
         // 动画途经点
         final points = await CLLocationCoordinate2D.create_batch(
-            latitudeBatch, longitudeBatch);
+          latitudeBatch,
+          longitudeBatch,
+        );
 
         // 设置图片
         // 普通图片
@@ -2498,12 +2612,12 @@ class AmapController with WidgetsBindingObserver, IMapController {
         // 添加动画
         final animation = await annotation
             .addMoveAnimationWithKeyCoordinates_count_withDuration_withName_completeCallback(
-          points,
-          points.length,
-          option.duration.inSeconds.toDouble(),
-          'name',
-          (finished) {},
-        );
+              points,
+              points.length,
+              option.duration.inSeconds.toDouble(),
+              'name',
+              (finished) {},
+            );
 
         await iosController!.addAnnotation(annotation);
 
@@ -2532,8 +2646,9 @@ class AmapController with WidgetsBindingObserver, IMapController {
     final objectBatch = option.pointList.map((it) => it.object).toList();
     Uint8List? iconData;
     if (option.iconProvider != null) {
-      iconData = await option.iconProvider!
-          .toImageData(createLocalImageConfiguration(state!.context));
+      iconData = await option.iconProvider!.toImageData(
+        createLocalImageConfiguration(state!.context),
+      );
     }
 
     return platform(
@@ -2559,8 +2674,9 @@ class AmapController with WidgetsBindingObserver, IMapController {
             ..add(icon);
         }
 
-        final multiPointOverlay =
-            await map!.addMultiPointOverlay(overlayOptions);
+        final multiPointOverlay = await map!.addMultiPointOverlay(
+          overlayOptions,
+        );
 
         final multiPointList = await com_amap_api_maps_model_MultiPointItem
             .create_batch__com_amap_api_maps_model_LatLng(latLngBatch);
@@ -2583,7 +2699,9 @@ class AmapController with WidgetsBindingObserver, IMapController {
         final pointItemList = await MAMultiPointItem.create_batch__(length);
 
         final latLngBatch = await CLLocationCoordinate2D.create_batch(
-            latitudeBatch, longitudeBatch);
+          latitudeBatch,
+          longitudeBatch,
+        );
 
         // 设置marker图标
         // 普通图片
@@ -2595,7 +2713,9 @@ class AmapController with WidgetsBindingObserver, IMapController {
         await pointItemList.set_title_batch(titleBatch.whereNotNull());
         await pointItemList.set_subtitle_batch(snippetBatch.whereNotNull());
         await pointItemList.addJsonableProperty_batch(
-            1, objectBatch.whereNotNull());
+          1,
+          objectBatch.whereNotNull(),
+        );
 
         await overlay.initWithMultiPointItems(pointItemList);
 
@@ -2618,8 +2738,8 @@ class AmapController with WidgetsBindingObserver, IMapController {
       android: (pool) async {
         final map = await androidController!.getMap();
 
-        final update =
-            await com_amap_api_maps_CameraUpdateFactory.changeBearing(bearing);
+        final update = await com_amap_api_maps_CameraUpdateFactory
+            .changeBearing(bearing);
         if (animated) {
           await map!.animateCamera__com_amap_api_maps_CameraUpdate(update!);
         } else {
@@ -2656,8 +2776,9 @@ class AmapController with WidgetsBindingObserver, IMapController {
       android: (pool) async {
         final map = await androidController!.getMap();
 
-        final update =
-            await com_amap_api_maps_CameraUpdateFactory.changeTilt(tilt);
+        final update = await com_amap_api_maps_CameraUpdateFactory.changeTilt(
+          tilt,
+        );
         if (animated) {
           await map!.animateCamera__com_amap_api_maps_CameraUpdate(update!);
         } else {
@@ -2721,11 +2842,8 @@ class AmapController with WidgetsBindingObserver, IMapController {
         final map = await androidController!.getMap();
 
         final builder = await com_amap_api_maps_model_CameraPosition.builder();
-        final latLng =
-            await com_amap_api_maps_model_LatLng.create__double__double(
-          coordinate.latitude,
-          coordinate.longitude,
-        );
+        final latLng = await com_amap_api_maps_model_LatLng
+            .create__double__double(coordinate.latitude, coordinate.longitude);
         await builder!.target(latLng);
         if (zoom != null) {
           await builder.zoom(zoom);
@@ -2742,10 +2860,10 @@ class AmapController with WidgetsBindingObserver, IMapController {
         if (animated) {
           await map!
               .animateCamera__com_amap_api_maps_CameraUpdate__int__com_amap_api_maps_AMap_CancelableCallback(
-            update!,
-            duration.inMilliseconds,
-            await com_amap_api_maps_AMap_CancelableCallback.anonymous__(),
-          );
+                update!,
+                duration.inMilliseconds,
+                await com_amap_api_maps_AMap_CancelableCallback.anonymous__(),
+              );
         } else {
           await map!.moveCamera(update!);
         }
@@ -2755,7 +2873,9 @@ class AmapController with WidgetsBindingObserver, IMapController {
       ios: (pool) async {
         final status = await MAMapStatus.create__();
         final latLng = await CLLocationCoordinate2D.create(
-            coordinate.latitude, coordinate.longitude);
+          coordinate.latitude,
+          coordinate.longitude,
+        );
         await status.set_centerCoordinate(latLng);
         if (zoom != null) {
           await status.set_zoomLevel(zoom);
@@ -2828,19 +2948,23 @@ class AmapController with WidgetsBindingObserver, IMapController {
               default:
                 break;
             }
-            await addPolyline(PolylineOption(
-              coordinateList: await tmc.polyline,
-              strokeColor: statusColor,
-              width: lineWidth,
-              textureProvider: customTexture,
-            ));
+            await addPolyline(
+              PolylineOption(
+                coordinateList: await tmc.polyline,
+                strokeColor: statusColor,
+                width: lineWidth,
+                textureProvider: customTexture,
+              ),
+            );
           }
         } else {
-          await addPolyline(PolylineOption(
-            coordinateList: await step.polyline,
-            width: lineWidth,
-            textureProvider: customTexture,
-          ));
+          await addPolyline(
+            PolylineOption(
+              coordinateList: await step.polyline,
+              width: lineWidth,
+              textureProvider: customTexture,
+            ),
+          );
         }
       }
     }
@@ -2870,34 +2994,40 @@ class AmapController with WidgetsBindingObserver, IMapController {
   }) async {
     assert(districtName.isNotEmpty);
     assert(sampleRate > 0 && sampleRate <= 1);
-    final district = await AmapSearch.instance
-        .searchDistrict(districtName, showBoundary: true);
+    final district = await AmapSearch.instance.searchDistrict(
+      districtName,
+      showBoundary: true,
+    );
 
     final districtList = district.districtList;
     if (districtList!.isNotEmpty) {
       if (onlyMainDistrict) {
         final sampler = Random();
-        List<LatLng> boundary = district.districtList![0].boundary!
-            .reduce((pre, next) => pre.length > next.length ? pre : next)
-          ..retainWhere((_) => sampler.nextDouble() <= sampleRate);
+        List<LatLng> boundary = district.districtList![0].boundary!.reduce(
+          (pre, next) => pre.length > next.length ? pre : next,
+        )..retainWhere((_) => sampler.nextDouble() <= sampleRate);
         return [
-          await addPolygon(PolygonOption(
-            coordinateList: boundary,
-            width: width,
-            strokeColor: strokeColor,
-            fillColor: fillColor,
-          ))
+          await addPolygon(
+            PolygonOption(
+              coordinateList: boundary,
+              width: width,
+              strokeColor: strokeColor,
+              fillColor: fillColor,
+            ),
+          ),
         ];
       } else {
         List<List<LatLng>> boundaryList = (district.districtList![0].boundary)!;
         return [
           for (final boundary in boundaryList)
-            await addPolygon(PolygonOption(
-              coordinateList: boundary,
-              width: width,
-              strokeColor: strokeColor,
-              fillColor: fillColor,
-            ))
+            await addPolygon(
+              PolygonOption(
+                coordinateList: boundary,
+                width: width,
+                strokeColor: strokeColor,
+                fillColor: fillColor,
+              ),
+            ),
         ];
       }
     } else {
@@ -2922,16 +3052,20 @@ class AmapController with WidgetsBindingObserver, IMapController {
   }) async {
     assert(coordinateList.isNotEmpty);
     // 画轨迹线
-    final polyline = await addPolyline(PolylineOption(
-      coordinateList: coordinateList,
-      width: width,
-      strokeColor: strokeColor,
-    ));
-    final marker = await addSmoothMoveMarker(SmoothMoveMarkerOption(
-      path: coordinateList,
-      duration: duration,
-      iconProvider: iconProvider,
-    ));
+    final polyline = await addPolyline(
+      PolylineOption(
+        coordinateList: coordinateList,
+        width: width,
+        strokeColor: strokeColor,
+      ),
+    );
+    final marker = await addSmoothMoveMarker(
+      SmoothMoveMarkerOption(
+        path: coordinateList,
+        duration: duration,
+        iconProvider: iconProvider,
+      ),
+    );
 
     return PlaybackTrace(marker, polyline);
   }
@@ -3025,6 +3159,8 @@ class AmapController with WidgetsBindingObserver, IMapController {
         break;
       case AppLifecycleState.detached:
         androidController?.onDestroy();
+        break;
+      case AppLifecycleState.hidden:
         break;
     }
   }

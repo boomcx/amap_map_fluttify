@@ -472,14 +472,6 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "2.1.0"
-  oktoast:
-    dependency: "direct main"
-    description:
-      name: oktoast
-      sha256: "60674b24cba8d762fa2564257b69469887d104f1e8d6394cd07d60e7e4318b96"
-      url: "https://pub.flutter-io.cn"
-    source: hosted
-    version: "3.2.0"
   package_config:
     dependency: transitive
     description:

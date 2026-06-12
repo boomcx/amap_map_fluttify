@@ -5,7 +5,8 @@ import 'package:demo_widgets/demo_widgets.dart';
 import 'package:flutter/material.dart';
 
 final _networkIcon = NetworkImage(
-    'https://w3.hoopchina.com.cn/30/a7/6a/30a76aea75aef69e4ea0e7d3dee552c7001.jpg');
+  'https://w3.hoopchina.com.cn/30/a7/6a/30a76aea75aef69e4ea0e7d3dee552c7001.jpg',
+);
 final _assetsIcon1 = AssetImage('images/test_icon.png');
 final _assetsIcon2 = AssetImage('images/arrow.png');
 
@@ -20,9 +21,9 @@ class DrawPolylineScreen extends StatefulWidget {
 
 class _DrawPolylineScreenState extends State<DrawPolylineScreen>
     with NextLatLng {
-  AmapController _controller;
-  IPolyline _currentPolyline;
-  IPlaybackTrace _playbackTrace;
+  late AmapController _controller;
+  IPolyline? _currentPolyline;
+  IPlaybackTrace? _playbackTrace;
   List<LatLng> _pointList = [];
 
   @override
@@ -42,10 +43,7 @@ class _DrawPolylineScreenState extends State<DrawPolylineScreen>
                     _controller = controller;
                   },
                 ),
-                Container(
-                  height: 100,
-                  color: Colors.black26,
-                ),
+                Container(height: 100, color: Colors.black26),
               ],
             ),
           ),
@@ -59,16 +57,18 @@ class _DrawPolylineScreenState extends State<DrawPolylineScreen>
                   onTap: () async {
                     _pointList = getNextBatchLatLng(3);
 
-                    await _controller.addPolyline(PolylineOption(
-                      coordinateList: [
-                        LatLng(39.999391, 116.135972),
-                        LatLng(39.898323, 116.057694),
-                        LatLng(39.900430, 116.265061),
-                        LatLng(39.955192, 116.140092),
-                      ],
-                      strokeColor: Colors.red,
-                      width: 10,
-                    ));
+                    await _controller.addPolyline(
+                      PolylineOption(
+                        coordinateList: [
+                          LatLng(39.999391, 116.135972),
+                          LatLng(39.898323, 116.057694),
+                          LatLng(39.900430, 116.265061),
+                          LatLng(39.955192, 116.140092),
+                        ],
+                        strokeColor: Colors.red,
+                        width: 10,
+                      ),
+                    );
                   },
                 ),
                 ListTile(
@@ -78,13 +78,16 @@ class _DrawPolylineScreenState extends State<DrawPolylineScreen>
                       toast('请先添加对比折线');
                       return;
                     }
-                    final smooth =
-                        await AmapService.instance.pathSmooth(_pointList);
-                    await _controller?.addPolyline(PolylineOption(
-                      coordinateList: smooth,
-                      width: 10,
-                      strokeColor: Colors.green,
-                    ));
+                    final smooth = await AmapService.instance.pathSmooth(
+                      _pointList,
+                    );
+                    await _controller?.addPolyline(
+                      PolylineOption(
+                        coordinateList: smooth,
+                        width: 10,
+                        strokeColor: Colors.green,
+                      ),
+                    );
                   },
                 ),
                 ListTile(
@@ -100,17 +103,18 @@ class _DrawPolylineScreenState extends State<DrawPolylineScreen>
                   title: Center(child: Text('添加线(自定义纹理)')),
                   onTap: () async {
                     await _currentPolyline?.remove();
-                    _currentPolyline =
-                        await _controller?.addPolyline(PolylineOption(
-                      coordinateList: [
-                        getNextLatLng(),
-                        getNextLatLng(),
-                        getNextLatLng(),
-                        getNextLatLng(),
-                      ],
-                      width: 10,
-                      textureProvider: _assetsIcon2,
-                    ));
+                    _currentPolyline = await _controller?.addPolyline(
+                      PolylineOption(
+                        coordinateList: [
+                          getNextLatLng(),
+                          getNextLatLng(),
+                          getNextLatLng(),
+                          getNextLatLng(),
+                        ],
+                        width: 10,
+                        textureProvider: _assetsIcon2,
+                      ),
+                    );
                   },
                 ),
                 ListTile(
@@ -130,10 +134,10 @@ class _DrawPolylineScreenState extends State<DrawPolylineScreen>
                     );
                     final pathList = await result.drivePathList;
                     final stepList = [
-                      for (final path in pathList) ...await path.driveStepList
+                      for (final path in pathList) ...await path.driveStepList,
                     ];
                     final coordinateList = [
-                      for (final step in stepList) ...await step.polyline
+                      for (final step in stepList) ...await step.polyline,
                     ];
                     _playbackTrace = await _controller.addPlaybackTrace(
                       coordinateList,
@@ -157,14 +161,9 @@ class _DrawPolylineScreenState extends State<DrawPolylineScreen>
                 ),
                 DiscreteSetting(
                   head: '选择始末端样式',
-                  options: [
-                    '普通头',
-                    '扩展头',
-                    '箭头',
-                    '圆形头',
-                  ],
+                  options: ['普通头', '扩展头', '箭头', '圆形头'],
                   onSelected: (value) async {
-                    LineCapType type;
+                    LineCapType type = LineCapType.Butt;
                     switch (value) {
                       case '普通头':
                         type = LineCapType.Butt;
@@ -180,29 +179,26 @@ class _DrawPolylineScreenState extends State<DrawPolylineScreen>
                         break;
                     }
                     await _currentPolyline?.remove();
-                    _currentPolyline =
-                        await _controller?.addPolyline(PolylineOption(
-                      coordinateList: [
-                        getNextLatLng(),
-                        getNextLatLng(),
-                        getNextLatLng(),
-                        getNextLatLng(),
-                      ],
-                      width: 10,
-                      strokeColor: Colors.green,
-                      lineCapType: type,
-                    ));
+                    _currentPolyline = await _controller?.addPolyline(
+                      PolylineOption(
+                        coordinateList: [
+                          getNextLatLng(),
+                          getNextLatLng(),
+                          getNextLatLng(),
+                          getNextLatLng(),
+                        ],
+                        width: 10,
+                        strokeColor: Colors.green,
+                        lineCapType: type,
+                      ),
+                    );
                   },
                 ),
                 DiscreteSetting(
                   head: '选择连接点样式',
-                  options: [
-                    '斜面连接点',
-                    '斜接连接点',
-                    '圆角连接点',
-                  ],
+                  options: ['斜面连接点', '斜接连接点', '圆角连接点'],
                   onSelected: (value) async {
-                    LineJoinType type;
+                    LineJoinType type = LineJoinType.Bevel;
                     switch (value) {
                       case '斜面连接点':
                         type = LineJoinType.Bevel;
@@ -215,29 +211,26 @@ class _DrawPolylineScreenState extends State<DrawPolylineScreen>
                         break;
                     }
                     await _currentPolyline?.remove();
-                    _currentPolyline =
-                        await _controller?.addPolyline(PolylineOption(
-                      coordinateList: [
-                        LatLng(39.999391, 116.135972),
-                        LatLng(39.898323, 116.057694),
-                        LatLng(39.900430, 116.265061),
-                        LatLng(39.955192, 116.140092),
-                      ],
-                      width: 10,
-                      strokeColor: Colors.green,
-                      lineJoinType: type,
-                    ));
+                    _currentPolyline = await _controller?.addPolyline(
+                      PolylineOption(
+                        coordinateList: [
+                          LatLng(39.999391, 116.135972),
+                          LatLng(39.898323, 116.057694),
+                          LatLng(39.900430, 116.265061),
+                          LatLng(39.955192, 116.140092),
+                        ],
+                        width: 10,
+                        strokeColor: Colors.green,
+                        lineJoinType: type,
+                      ),
+                    );
                   },
                 ),
                 DiscreteSetting(
                   head: '选择始折线样式',
-                  options: [
-                    '普通折线',
-                    '方块虚线',
-                    '圆形虚线',
-                  ],
+                  options: ['普通折线', '方块虚线', '圆形虚线'],
                   onSelected: (value) async {
-                    DashType type;
+                    DashType? type;
                     switch (value) {
                       case '普通折线':
                         type = null;
@@ -250,18 +243,19 @@ class _DrawPolylineScreenState extends State<DrawPolylineScreen>
                         break;
                     }
                     await _currentPolyline?.remove();
-                    _currentPolyline =
-                        await _controller?.addPolyline(PolylineOption(
-                      coordinateList: [
-                        getNextLatLng(),
-                        getNextLatLng(),
-                        getNextLatLng(),
-                        getNextLatLng(),
-                      ],
-                      width: 10,
-                      strokeColor: Colors.green,
-                      dashType: type,
-                    ));
+                    _currentPolyline = await _controller?.addPolyline(
+                      PolylineOption(
+                        coordinateList: [
+                          getNextLatLng(),
+                          getNextLatLng(),
+                          getNextLatLng(),
+                          getNextLatLng(),
+                        ],
+                        width: 10,
+                        strokeColor: Colors.green,
+                        dashType: type,
+                      ),
+                    );
                   },
                 ),
               ],

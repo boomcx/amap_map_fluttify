@@ -14,10 +14,10 @@ class GeoFenceScreen extends StatefulWidget {
 }
 
 class _GeoFenceScreenState extends State<GeoFenceScreen> {
-  AmapController _controller;
-  List<LatLng> _fenceCoordinateList;
-  IPolygon _fencePolygon;
-  String _fenceState;
+  late AmapController _controller;
+  List<LatLng> _fenceCoordinateList = [];
+  IPolygon? _fencePolygon;
+  String _fenceState = '';
 
   @override
   void initState() {
@@ -37,29 +37,32 @@ class _GeoFenceScreenState extends State<GeoFenceScreen> {
             onMapCreated: (controller) async {
               _controller = controller;
               await _controller.setMapClickedListener(_handleMapClick);
-              await _controller.showMyLocation(MyLocationOption(
-                strokeColor: Colors.transparent,
-                fillColor: Colors.transparent,
-              ));
+              await _controller.showMyLocation(
+                MyLocationOption(
+                  strokeColor: Colors.transparent,
+                  fillColor: Colors.transparent,
+                ),
+              );
               await Future.delayed(Duration(milliseconds: 1200));
               final coordinate = await _controller.getLocation();
               await _controller.setCameraPosition(
-                coordinate: coordinate,
+                coordinate: coordinate!,
                 zoom: 17,
                 tilt: 90,
               );
               // 搜索poi
-              final poiList =
-                  await AmapSearch.instance.searchAround(coordinate);
+              final poiList = await AmapSearch.instance.searchAround(
+                coordinate!,
+              );
               await _controller.addMarkers([
                 for (final poi in poiList)
                   MarkerOption(
-                    coordinate: poi.latLng,
+                    coordinate: poi.latLng!,
                     iconProvider: AssetImage('images/test_icon.png'),
-                    title: poi.title,
-                    snippet: poi.address,
+                    title: poi.title ?? '',
+                    snippet: poi.address ?? '',
                     object: '自定义数据: ${poi.poiId}',
-                  )
+                  ),
               ]);
             },
           ),
@@ -68,7 +71,7 @@ class _GeoFenceScreenState extends State<GeoFenceScreen> {
             right: kSpace16,
             bottom: kSpace16,
             child: IgnorePointer(
-              child: Text(_fenceState, style: context.textTheme.headline5),
+              child: Text(_fenceState, style: context.textTheme.headlineSmall),
             ),
           ),
         ],
@@ -88,20 +91,20 @@ class _GeoFenceScreenState extends State<GeoFenceScreen> {
     toast(content);
     if (_fenceCoordinateList.isNotEmpty) {
       _fencePolygon?.remove();
-      _fencePolygon = await _controller.addPolygon(PolygonOption(
-        coordinateList: _fenceCoordinateList,
-      ));
+      _fencePolygon = await _controller.addPolygon(
+        PolygonOption(coordinateList: _fenceCoordinateList),
+      );
       AmapLocation.instance
           .addPolygonGeoFence(pointList: _fenceCoordinateList)
           .listen((event) {
-        setState(() => _fenceState = '电子围栏事件: ${event.toString()}');
-      });
+            setState(() => _fenceState = '电子围栏事件: ${event.toString()}');
+          });
     }
   }
 
   void _handleClearGeoFence(BuildContext context) {
     _fenceCoordinateList.clear();
-    _fencePolygon.remove();
+    _fencePolygon?.remove();
     setState(() {
       _fenceState = '点击地图创建电子围栏';
     });

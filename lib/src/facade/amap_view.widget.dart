@@ -3,7 +3,6 @@ import 'dart:io';
 import 'dart:math';
 import 'dart:typed_data';
 import 'dart:ui';
-import 'dart:ui' as ui;
 
 import 'package:amap_map_fluttify/amap_map_fluttify.dart';
 import 'package:amap_map_fluttify/src/android/android.export.g.dart';
@@ -54,11 +53,11 @@ class AmapView extends StatefulWidget {
     this.autoRelease = true,
     this.gestureRecognizers,
     this.hybridComposition = false,
-  })  : assert(
-          zoomLevel == null || (zoomLevel >= 3 && zoomLevel <= 19),
-          '缩放范围为3-19',
-        ),
-        super(key: key);
+  }) : assert(
+         zoomLevel == null || (zoomLevel >= 3 && zoomLevel <= 19),
+         '缩放范围为3-19',
+       ),
+       super(key: key);
 
   /// 地图创建完成回调
   final _OnMapCreated? onMapCreated;
@@ -158,7 +157,8 @@ class _AmapViewState extends State<AmapView> {
       builder: (context, snapshot) {
         return Visibility(
           visible: snapshot.requireData,
-          child: widget.mask ??
+          child:
+              widget.mask ??
               Container(
                 color: Colors.white,
                 child: const Center(child: CupertinoActivityIndicator()),
@@ -273,7 +273,7 @@ class _AmapViewState extends State<AmapView> {
       _widgetLayer = Stack(
         children: [
           for (int i = 0; i < markerList.length; i++)
-            RepaintBoundary(key: globalKeyList[i], child: markerList[i])
+            RepaintBoundary(key: globalKeyList[i], child: markerList[i]),
         ],
       );
     });
@@ -289,7 +289,7 @@ class _AmapViewState extends State<AmapView> {
                 ?.toImage(pixelRatio: ratio)
                 .then((image) => image.toByteData(format: ImageByteFormat.png))
                 .then((byteData) => byteData!.buffer.asUint8List())
-                .then((data) => result.add(data))
+                .then((data) => result.add(data)),
         ];
         await Future.wait<void>(futures.whereType<Future>());
         completer.complete(result);

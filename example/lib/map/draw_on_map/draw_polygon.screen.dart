@@ -13,7 +13,7 @@ class DrawPolygonScreen extends StatefulWidget {
 }
 
 class _DrawPolygonScreenState extends State<DrawPolygonScreen> with NextLatLng {
-  AmapController _controller;
+  late AmapController _controller;
   List<IPolygon> _polygonList = [];
 
   @override
@@ -48,7 +48,7 @@ class _DrawPolygonScreenState extends State<DrawPolygonScreen> with NextLatLng {
                       width: 10,
                       strokeColor: Colors.green,
                     ));
-                    _polygonList.add(polygon);
+                    _polygonList.add(polygon!);
                   },
                 ),
                 ListTile(
@@ -93,7 +93,7 @@ class _DrawPolygonScreenState extends State<DrawPolygonScreen> with NextLatLng {
                       fillColor: Colors.blue.withOpacity(0.3),
                       strokeColor: Colors.transparent,
                     ));
-                    _polygonList.add(polygon);
+                    _polygonList.add(polygon!);
                   },
                 ),
                 ListTile(

@@ -18,8 +18,8 @@ class _LocationPickerScreenState extends State<LocationPickerScreen> {
         },
         poiItemBuilder: (poi, selected) {
           return ListTile(
-            title: Text(poi.title),
-            subtitle: Text(poi.address),
+            title: Text(poi.title ?? ''),
+            subtitle: Text(poi.address ?? ''),
             trailing: selected ? Icon(Icons.check) : SizedBox.shrink(),
           );
         },

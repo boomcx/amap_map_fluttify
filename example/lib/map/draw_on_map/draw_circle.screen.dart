@@ -13,7 +13,7 @@ class DrawCircleScreen extends StatefulWidget {
 }
 
 class _DrawCircleScreenState extends State<DrawCircleScreen> with NextLatLng {
-  AmapController _controller;
+  late AmapController _controller;
   List<ICircle> _circleList = [];
 
   @override
@@ -43,7 +43,7 @@ class _DrawCircleScreenState extends State<DrawCircleScreen> with NextLatLng {
                       width: 10,
                       strokeColor: Colors.green,
                     ));
-                    _circleList.add(circle);
+                    _circleList.add(circle!);
                   },
                 ),
                 ListTile(

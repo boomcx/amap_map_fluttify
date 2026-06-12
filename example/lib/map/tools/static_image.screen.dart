@@ -10,7 +10,7 @@ class StaticImageScreen extends StatefulWidget {
 }
 
 class _StaticImageScreenState extends State<StaticImageScreen> {
-  Uint8List _imageData;
+  Uint8List? _imageData;
 
   @override
   Widget build(BuildContext context) {
@@ -20,11 +20,11 @@ class _StaticImageScreenState extends State<StaticImageScreen> {
         child: DecoratedColumn(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            RaisedButton(
+            ElevatedButton(
               onPressed: () {
-                AmapService.instance
-                    .fetchStaticMapImage(LatLng(30, 120))
-                    .then((value) {
+                AmapService.instance.fetchStaticMapImage(LatLng(30, 120)).then((
+                  value,
+                ) {
                   setState(() {
                     _imageData = value;
                   });
@@ -32,7 +32,7 @@ class _StaticImageScreenState extends State<StaticImageScreen> {
               },
               child: Text('获取静态图'),
             ),
-            if (_imageData != null) Image.memory(_imageData),
+            if (_imageData != null) Image.memory(_imageData!),
           ],
         ),
       ),

@@ -8,7 +8,8 @@ import 'package:demo_widgets/demo_widgets.dart';
 import 'package:flutter/material.dart';
 
 final _networkIcon = NetworkImage(
-    'https://w3.hoopchina.com.cn/30/a7/6a/30a76aea75aef69e4ea0e7d3dee552c7001.jpg');
+  'https://w3.hoopchina.com.cn/30/a7/6a/30a76aea75aef69e4ea0e7d3dee552c7001.jpg',
+);
 final _assetsIcon1 = AssetImage('images/test_icon.png');
 final _assetsIcon2 = AssetImage('images/arrow.png');
 
@@ -20,11 +21,11 @@ class DrawPointScreen extends StatefulWidget {
 }
 
 class DrawPointScreenState extends State<DrawPointScreen> with NextLatLng {
-  AmapController _controller;
+  late AmapController _controller;
   List<IMarker> _markers = [];
-  IMarker _hiddenMarker;
-  ISmoothMoveMarker _moveMarker;
-  IMultiPointOverlay _multiPointOverlay;
+  IMarker? _hiddenMarker;
+  ISmoothMoveMarker? _moveMarker;
+  IMultiPointOverlay? _multiPointOverlay;
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +39,7 @@ class DrawPointScreenState extends State<DrawPointScreen> with NextLatLng {
               zoomLevel: 6,
               onMapCreated: (controller) async {
                 _controller = controller;
-//                    await _controller.setMapAnchor(0.5, 0.8);
+                //                    await _controller.setMapAnchor(0.5, 0.8);
                 if (await requestPermission()) {
                   await controller.setZoomLevel(6);
                 }
@@ -53,24 +54,22 @@ class DrawPointScreenState extends State<DrawPointScreen> with NextLatLng {
                 ListTile(
                   title: Center(child: Text('添加Widget Marker')),
                   onTap: () async {
-                    final marker = await _controller?.addMarkers(
-                      [
-                        for (int i = 0; i < 10; i++)
-                          MarkerOption(
-                            coordinate: getNextLatLng(),
-                            widget: Column(
-                              mainAxisSize: MainAxisSize.min,
-                              children: <Widget>[
-                                Text('使用Widget作为Marker: $i'),
-                                Image.asset('images/test_icon.png'),
-                              ],
-                            ),
-                            title: '北京',
-                            snippet: '描述',
-                          )
-                      ],
-                    );
-                    _markers.addAll(marker);
+                    final marker = await _controller?.addMarkers([
+                      for (int i = 0; i < 10; i++)
+                        MarkerOption(
+                          coordinate: getNextLatLng(),
+                          widget: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: <Widget>[
+                              Text('使用Widget作为Marker: $i'),
+                              Image.asset('images/test_icon.png'),
+                            ],
+                          ),
+                          title: '北京',
+                          snippet: '描述',
+                        ),
+                    ]);
+                    _markers.addAll(marker ?? []);
                   },
                 ),
                 ListTile(
@@ -87,7 +86,7 @@ class DrawPointScreenState extends State<DrawPointScreen> with NextLatLng {
                         opacity: 0.7,
                       ),
                     );
-                    _markers.add(marker);
+                    _markers.add(marker!);
                   },
                 ),
                 ListTile(
@@ -100,8 +99,8 @@ class DrawPointScreenState extends State<DrawPointScreen> with NextLatLng {
                   title: Center(child: Text('添加自定义Info Window')),
                   onTap: () async {
                     await _controller?.setMarkerClickedListener((marker) async {
-                      await _controller.showCustomInfoWindow(
-                        marker,
+                      await _controller?.showCustomInfoWindow(
+                        marker as Marker,
                         Card(
                           elevation: 10,
                           child: Container(
@@ -118,8 +117,9 @@ class DrawPointScreenState extends State<DrawPointScreen> with NextLatLng {
                       );
                     });
                     // info window点击事件
-                    await _controller
-                        .setInfoWindowClickListener((marker) async {
+                    await _controller.setInfoWindowClickListener((
+                      marker,
+                    ) async {
                       toast(await marker.title);
                     });
                   },
@@ -137,7 +137,7 @@ class DrawPointScreenState extends State<DrawPointScreen> with NextLatLng {
                         object: '自定义数据${random.nextDouble()}',
                       ),
                     );
-                    _markers.add(marker);
+                    _markers.add(marker!);
                   },
                 ),
                 ListTile(
@@ -152,14 +152,16 @@ class DrawPointScreenState extends State<DrawPointScreen> with NextLatLng {
                         visible: false,
                       ),
                     );
-                    await marker.startAnimation(ScaleMarkerAnimation(
-                      fromValue: 0.8,
-                      toValue: 1.2,
-                      duration: Duration(milliseconds: 1000),
-                      repeatCount: 0,
-                    ));
-                    await marker.setVisible(true);
-                    _markers.add(marker);
+                    await marker?.startAnimation(
+                      ScaleMarkerAnimation(
+                        fromValue: 0.8,
+                        toValue: 1.2,
+                        duration: Duration(milliseconds: 1000),
+                        repeatCount: 0,
+                      ),
+                    );
+                    await marker?.setVisible(true);
+                    _markers.add(marker!);
                   },
                 ),
                 ListTile(
@@ -174,13 +176,15 @@ class DrawPointScreenState extends State<DrawPointScreen> with NextLatLng {
                         visible: false,
                       ),
                     );
-                    await marker.startAnimation(TranslateMarkerAnimation(
-                      coordinate: getNextLatLng(),
-                      duration: Duration(milliseconds: 1000),
-                      repeatCount: 10000000,
-                    ));
-                    await marker.setVisible(true);
-                    _markers.add(marker);
+                    await marker?.startAnimation(
+                      TranslateMarkerAnimation(
+                        coordinate: getNextLatLng(),
+                        duration: Duration(milliseconds: 1000),
+                        repeatCount: 10000000,
+                      ),
+                    );
+                    await marker?.setVisible(true);
+                    _markers.add(marker!);
                   },
                 ),
                 ListTile(
@@ -195,14 +199,16 @@ class DrawPointScreenState extends State<DrawPointScreen> with NextLatLng {
                         visible: false,
                       ),
                     );
-                    await marker.startAnimation(AlphaMarkerAnimation(
-                      fromValue: 0,
-                      toValue: 1,
-                      duration: Duration(milliseconds: 1000),
-                      repeatCount: 0,
-                    ));
-                    await marker.setVisible(true);
-                    _markers.add(marker);
+                    await marker?.startAnimation(
+                      AlphaMarkerAnimation(
+                        fromValue: 0,
+                        toValue: 1,
+                        duration: Duration(milliseconds: 1000),
+                        repeatCount: 0,
+                      ),
+                    );
+                    await marker?.setVisible(true);
+                    _markers.add(marker!);
                   },
                 ),
                 ListTile(
@@ -217,14 +223,16 @@ class DrawPointScreenState extends State<DrawPointScreen> with NextLatLng {
                         visible: false,
                       ),
                     );
-                    await marker.startAnimation(RotateMarkerAnimation(
-                      fromValue: 0,
-                      toValue: 100,
-                      duration: Duration(milliseconds: 1000),
-                      repeatCount: 0,
-                    ));
-                    await marker.setVisible(true);
-                    _markers.add(marker);
+                    await marker?.startAnimation(
+                      RotateMarkerAnimation(
+                        fromValue: 0,
+                        toValue: 100,
+                        duration: Duration(milliseconds: 1000),
+                        repeatCount: 0,
+                      ),
+                    );
+                    await marker?.setVisible(true);
+                    _markers.add(marker!);
                   },
                 ),
                 ListTile(
@@ -239,16 +247,19 @@ class DrawPointScreenState extends State<DrawPointScreen> with NextLatLng {
                         visible: false,
                       ),
                     );
-                    await marker.startAnimation(MarkerAnimationSet(
-                      animationSet: [
-                        RotateMarkerAnimation(fromValue: 0, toValue: 100),
-                        AlphaMarkerAnimation(fromValue: 0, toValue: 1),
-                        ScaleMarkerAnimation(fromValue: 0.8, toValue: 1.2),
-                      ],
-                      repeatCount: 0,
-                    ));
-                    await marker.setVisible(true);
-                    _markers.add(marker);
+                    await marker?.startAnimation(
+                      MarkerAnimationSet(
+                        animationSet: [
+                          RotateMarkerAnimation(fromValue: 0, toValue: 100),
+                          AlphaMarkerAnimation(fromValue: 0, toValue: 1),
+                          ScaleMarkerAnimation(fromValue: 0.8, toValue: 1.2),
+                        ],
+                        repeatCount: 0,
+                        duration: Duration(milliseconds: 1000),
+                      ),
+                    );
+                    await marker?.setVisible(true);
+                    _markers.add(marker!);
                   },
                 ),
                 ListTile(
@@ -261,13 +272,13 @@ class DrawPointScreenState extends State<DrawPointScreen> with NextLatLng {
                         snippet: '描述${random.nextDouble()}',
                         iconsProvider: [
                           for (int i = 0; i < 20; i++)
-                            AssetImage('images/animation$i.jpg')
+                            AssetImage('images/animation$i.jpg'),
                         ],
                         animationFps: 3,
                         object: '自定义数据${random.nextDouble()}',
                       ),
                     );
-                    _markers.add(marker);
+                    _markers.add(marker!);
                   },
                 ),
                 ListTile(
@@ -332,24 +343,25 @@ class DrawPointScreenState extends State<DrawPointScreen> with NextLatLng {
                         anchorV: 0,
                       ),
                     );
-                    _markers.add(marker);
+                    _markers.add(marker!);
                   },
                 ),
                 ListTile(
                   title: Center(child: Text('批量添加Marker')),
                   onTap: () {
-                    _controller?.addMarkers(
-                      [
-                        for (int i = 0; i < 100; i++)
-                          MarkerOption(
-                            coordinate: getNextLatLng(),
-                            iconProvider:
-                                i % 2 == 0 ? _assetsIcon1 : _assetsIcon2,
-                            infoWindowEnabled: false,
-                            object: 'Marker_$i',
-                          ),
-                      ],
-                    )?.then(_markers.addAll);
+                    _controller
+                        ?.addMarkers([
+                          for (int i = 0; i < 100; i++)
+                            MarkerOption(
+                              coordinate: getNextLatLng(),
+                              iconProvider: i % 2 == 0
+                                  ? _assetsIcon1
+                                  : _assetsIcon2,
+                              infoWindowEnabled: false,
+                              object: 'Marker_$i',
+                            ),
+                        ])
+                        ?.then(_markers.addAll);
                   },
                 ),
                 ListTile(
@@ -381,7 +393,6 @@ class DrawPointScreenState extends State<DrawPointScreen> with NextLatLng {
                         _assetsIcon2,
                         createLocalImageConfiguration(context),
                       );
-                      return true;
                     });
                   },
                 ),
@@ -404,22 +415,23 @@ class DrawPointScreenState extends State<DrawPointScreen> with NextLatLng {
                         .asyncMap((marker) => marker.coordinate)
                         .toList()
                         .then((boundary) {
-                      debugPrint('boundary: $boundary');
-                      _controller.zoomToSpan(
-                        boundary,
-                        padding: EdgeInsets.only(top: 100, bottom: 50),
-                      );
-                    });
+                          debugPrint('boundary: $boundary');
+                          _controller.zoomToSpan(
+                            boundary,
+                            padding: EdgeInsets.only(top: 100, bottom: 50),
+                          );
+                        });
                   },
                 ),
                 ListTile(
                   title: Center(child: Text('监听Marker弹窗事件')),
                   onTap: () async {
-                    await _controller
-                        ?.setInfoWindowClickListener((marker) async {
+                    await _controller?.setInfoWindowClickListener((
+                      marker,
+                    ) async {
                       toast(
-                          '${await marker.title}, ${await marker.coordinate}');
-                      return false;
+                        '${await marker.title}, ${await marker.coordinate}',
+                      );
                     });
                   },
                 ),
@@ -445,7 +457,7 @@ class DrawPointScreenState extends State<DrawPointScreen> with NextLatLng {
                         width: 256,
                         height: 256,
                         urlTemplate:
-//                        'http://tile.opencyclemap.org/cycle/{scale}/{x}/{y}.png', // 由于没有api key, 这个链接无法显示瓦片
+                            //                        'http://tile.opencyclemap.org/cycle/{scale}/{x}/{y}.png', // 由于没有api key, 这个链接无法显示瓦片
                             'https://c2.hoopchina.com.cn/uploads/star/event/images/200709/bmiddle-34faa76c78ff3ba7a67282d64ff3c081135d4743.jpg?x-oss-process=image/resize,w_780,312',
                       ),
                     );
@@ -463,7 +475,7 @@ class DrawPointScreenState extends State<DrawPointScreen> with NextLatLng {
                     );
                     Future.delayed(
                       Duration(seconds: 5),
-                      () => _moveMarker.stop(),
+                      () => _moveMarker?.stop(),
                     );
                   },
                 ),
@@ -479,29 +491,32 @@ class DrawPointScreenState extends State<DrawPointScreen> with NextLatLng {
                 ListTile(
                   title: Center(child: Text('添加海量点')),
                   onTap: () async {
-                    _multiPointOverlay =
-                        await _controller?.addMultiPointOverlay(
-                      MultiPointOption(
-                        pointList: [
-                          for (int i = 0; i < 10000; i++)
-                            PointOption(
-                              coordinate: getNextLatLng(),
-                              id: i.toString(),
-                              title: 'Point$i',
-                              snippet: 'Snippet$i',
-                              object: 'Object$i',
-                            )
-                        ],
-                        iconProvider: _assetsIcon1,
-                      ),
-                    );
-                    await _controller?.setMultiPointClickedListener(
-                      (id, title, snippet, object) async {
-                        toast(
-                          'id: $id, title: $title, snippet: $snippet, object: $object',
+                    _multiPointOverlay = await _controller
+                        ?.addMultiPointOverlay(
+                          MultiPointOption(
+                            pointList: [
+                              for (int i = 0; i < 10000; i++)
+                                PointOption(
+                                  coordinate: getNextLatLng(),
+                                  id: i.toString(),
+                                  title: 'Point$i',
+                                  snippet: 'Snippet$i',
+                                  object: 'Object$i',
+                                ),
+                            ],
+                            iconProvider: _assetsIcon1,
+                          ),
                         );
-                      },
-                    );
+                    await _controller?.setMultiPointClickedListener((
+                      id,
+                      title,
+                      snippet,
+                      object,
+                    ) async {
+                      toast(
+                        'id: $id, title: $title, snippet: $snippet, object: $object',
+                      );
+                    });
                   },
                 ),
                 ListTile(
@@ -514,7 +529,7 @@ class DrawPointScreenState extends State<DrawPointScreen> with NextLatLng {
                   title: Center(child: Text('修改title')),
                   onTap: () {
                     _markers.firstOrNull
-                      ..setTitle('修改title ${Random().nextInt(100)}')
+                      ?..setTitle('修改title ${Random().nextInt(100)}')
                       ..showInfoWindow();
                   },
                 ),
@@ -522,7 +537,7 @@ class DrawPointScreenState extends State<DrawPointScreen> with NextLatLng {
                   title: Center(child: Text('修改snippet')),
                   onTap: () {
                     _markers.firstOrNull
-                      ..setSnippet('修改snippet ${Random().nextInt(100)}')
+                      ?..setSnippet('修改snippet ${Random().nextInt(100)}')
                       ..showInfoWindow();
                   },
                 ),

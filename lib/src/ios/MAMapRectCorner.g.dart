@@ -27,11 +27,11 @@ extension MAMapRectCornerToX on MAMapRectCorner {
 extension MAMapRectCornerFromX on int {
   MAMapRectCorner toMAMapRectCorner() {
     switch (this) {
-      case 1<<0: return MAMapRectCorner.MAMapRectCornerTopLeft;
-      case 1<<1: return MAMapRectCorner.MAMapRectCornerTopRight;
-      case 1<<2: return MAMapRectCorner.MAMapRectCornerBottomLeft;
-      case 1<<3: return MAMapRectCorner.MAMapRectCornerBottomRight;
-      case ~0: return MAMapRectCorner.MAMapRectCornerAllCorners;
+      case == 1<<0: return MAMapRectCorner.MAMapRectCornerTopLeft;
+      case == 1<<1: return MAMapRectCorner.MAMapRectCornerTopRight;
+      case == 1<<2: return MAMapRectCorner.MAMapRectCornerBottomLeft;
+      case == 1<<3: return MAMapRectCorner.MAMapRectCornerBottomRight;
+      case -1: return MAMapRectCorner.MAMapRectCornerAllCorners;
       default: return MAMapRectCorner.values[this + 1<<0];
     }
   }

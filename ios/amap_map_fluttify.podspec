@@ -22,7 +22,8 @@ A new flutter plugin project.
   s.dependency 'AMap3DMap-NO-IDFA', '9.2.1'
 
   s.static_framework = true
-  s.ios.deployment_target = '11.0'
+  s.ios.deployment_target = '13.0'
+  s.pod_target_xcconfig = { 'DEFINES_MODULE' => 'YES' }
   # include project framework
   s.vendored_frameworks = 'Vendors/*.framework'
   # include project .a

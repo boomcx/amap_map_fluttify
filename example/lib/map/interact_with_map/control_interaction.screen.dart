@@ -15,7 +15,7 @@ class ControlInteractionScreen extends StatefulWidget {
 }
 
 class _ControlInteractionScreenState extends State<ControlInteractionScreen> {
-  AmapController _controller;
+  late AmapController _controller;
 
   @override
   Widget build(BuildContext context) {

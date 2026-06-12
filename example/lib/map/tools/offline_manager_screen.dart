@@ -7,7 +7,7 @@ class OfflineManagerScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: Text('打开离线地图管理')),
       body: Center(
-        child: RaisedButton(
+        child: ElevatedButton(
           onPressed: () {
             AmapService.instance.openOfflineMapManager();
           },

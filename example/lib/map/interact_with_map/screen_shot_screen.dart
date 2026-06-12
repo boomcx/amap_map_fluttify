@@ -10,8 +10,8 @@ class ScreenShotScreen extends StatefulWidget {
 }
 
 class _ScreenShotScreenState extends State<ScreenShotScreen> {
-  Uint8List _data;
-  AmapController _controller;
+  Uint8List? _data;
+  late AmapController _controller;
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +32,7 @@ class _ScreenShotScreenState extends State<ScreenShotScreen> {
             flex: 3,
             child: DecoratedColumn(
               children: <Widget>[
-                RaisedButton(
+                ElevatedButton(
                   onPressed: () async {
                     final data = await _controller.screenShot();
                     setState(() {
@@ -41,7 +41,7 @@ class _ScreenShotScreenState extends State<ScreenShotScreen> {
                   },
                   child: Text('截图'),
                 ),
-                if (_data != null) Image.memory(_data)
+                if (_data != null) Image.memory(_data!),
               ],
             ),
           ),

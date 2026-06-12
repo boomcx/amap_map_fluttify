@@ -1013,7 +1013,7 @@ T? AmapMapFluttifyAndroidAs<T>(dynamic __this__) {
   if (AmapSearchFluttifyObject != null) {
     return AmapSearchFluttifyObject;
   }
-  final AmapLocationFluttifyObject = AmapLocationFluttifyAndroidAs<T>(__this__);
+  final AmapLocationFluttifyObject = AmapLocationFluttifyAndroidAs(__this__, typeName);
   if (AmapLocationFluttifyObject != null) {
     return AmapLocationFluttifyObject;
   }

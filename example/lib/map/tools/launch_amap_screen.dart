@@ -16,14 +16,14 @@ class _LaunchAmapScreenState extends State<LaunchAmapScreen> {
         child: DecoratedColumn(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            RaisedButton(
+            ElevatedButton(
               onPressed: () {
                 AmapService.instance
                     .navigateDrive(LatLng(36.547901, 104.258354));
               },
               child: Text('高德地图驾车导航'),
             ),
-            RaisedButton(
+            ElevatedButton(
               onPressed: () {
                 AmapService.instance
                     .navigateRide(LatLng(36.547901, 104.258354));

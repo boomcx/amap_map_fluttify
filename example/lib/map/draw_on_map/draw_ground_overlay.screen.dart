@@ -4,7 +4,8 @@ import 'package:decorated_flutter/decorated_flutter.dart';
 import 'package:flutter/material.dart';
 
 final _networkIcon = NetworkImage(
-    'https://w3.hoopchina.com.cn/30/a7/6a/30a76aea75aef69e4ea0e7d3dee552c7001.jpg');
+  'https://w3.hoopchina.com.cn/30/a7/6a/30a76aea75aef69e4ea0e7d3dee552c7001.jpg',
+);
 final _assetsIcon1 = AssetImage('images/test_icon.png');
 final _assetsIcon2 = AssetImage('images/arrow.png');
 
@@ -17,8 +18,8 @@ class DrawGroundOverlayScreen extends StatefulWidget {
 
 class DrawGroundOverlayScreenState extends State<DrawGroundOverlayScreen>
     with NextLatLng {
-  AmapController _controller;
-  IGroundOverlay _overlay;
+  late AmapController _controller;
+  IGroundOverlay? _overlay;
 
   @override
   Widget build(BuildContext context) {

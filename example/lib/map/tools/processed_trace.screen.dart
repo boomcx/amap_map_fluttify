@@ -10,7 +10,7 @@ class ProcessedTraceScreen extends StatefulWidget {
 class ProcessedTraceStateScreen extends State<ProcessedTraceScreen> {
   List<LatLng> _result = [];
 
-  AmapController _controller;
+  late AmapController _controller;
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +32,7 @@ class ProcessedTraceStateScreen extends State<ProcessedTraceScreen> {
               },
             ),
           ),
-          RaisedButton(
+          ElevatedButton(
             onPressed: () async {
               await AmapService.instance.queryProcessedTrace(
                 1,

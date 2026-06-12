@@ -5,7 +5,7 @@ import 'package:amap_map_fluttify/amap_map_fluttify.dart';
 mixin NextLatLng {
   final random = Random();
 
-  LatLng getNextLatLng({LatLng center}) {
+  LatLng getNextLatLng({LatLng? center}) {
     center ??= LatLng(39.90960, 116.397228);
     return LatLng(
       center.latitude + random.nextDouble(),

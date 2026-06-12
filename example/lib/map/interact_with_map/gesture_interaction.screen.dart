@@ -15,7 +15,7 @@ class GestureInteractionScreen extends StatefulWidget {
 }
 
 class _GestureInteractionScreenState extends State<GestureInteractionScreen> {
-  AmapController _controller;
+  late AmapController _controller;
 
   @override
   Widget build(BuildContext context) {

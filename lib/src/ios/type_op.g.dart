@@ -553,7 +553,7 @@ T? AmapMapFluttifyIOSAs<T>(dynamic __this__) {
   if (AmapSearchFluttifyObject != null) {
     return AmapSearchFluttifyObject;
   }
-  final AmapLocationFluttifyObject = AmapLocationFluttifyIOSAs<T>(__this__);
+  final AmapLocationFluttifyObject = AmapLocationFluttifyIOSAs(__this__, typeName);
   if (AmapLocationFluttifyObject != null) {
     return AmapLocationFluttifyObject;
   }

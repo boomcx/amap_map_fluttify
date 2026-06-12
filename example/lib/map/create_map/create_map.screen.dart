@@ -17,7 +17,7 @@ class CreateMapScreen extends StatefulWidget {
 
 class _CreateMapScreenState extends State<CreateMapScreen>
     with NextLatLng, DisposeBag {
-  AmapController _controller;
+  late AmapController _controller;
 
   @override
   Widget build(BuildContext context) {
@@ -53,8 +53,9 @@ class _CreateMapScreenState extends State<CreateMapScreen>
                   head: '是否显示定位',
                   onSelected: (value) async {
                     await Permission.location.request();
-                    await _controller
-                        ?.showMyLocation(MyLocationOption(show: value));
+                    await _controller?.showMyLocation(
+                      MyLocationOption(show: value),
+                    );
                   },
                 ),
                 DiscreteSetting(
@@ -68,52 +69,58 @@ class _CreateMapScreenState extends State<CreateMapScreen>
                   ],
                   onSelected: (String value) async {
                     if (value == '只定位不移动地图到中心') {
-                      await _controller?.showMyLocation(MyLocationOption(
-                        myLocationType: MyLocationType.Show,
-                      ));
+                      await _controller?.showMyLocation(
+                        MyLocationOption(myLocationType: MyLocationType.Show),
+                      );
                     } else if (value == '定位一次并移动地图到中心') {
-                      await _controller?.showMyLocation(MyLocationOption(
-                        myLocationType: MyLocationType.Locate,
-                      ));
+                      await _controller?.showMyLocation(
+                        MyLocationOption(myLocationType: MyLocationType.Locate),
+                      );
                     } else if (value == '连续定位并跟随') {
-                      await _controller?.showMyLocation(MyLocationOption(
-                        myLocationType: MyLocationType.Follow,
-                        interval: Duration(seconds: 3),
-                      ));
+                      await _controller?.showMyLocation(
+                        MyLocationOption(
+                          myLocationType: MyLocationType.Follow,
+                          interval: Duration(seconds: 3),
+                        ),
+                      );
                     } else if (value == '跟随但不移动到地图中心') {
-                      await _controller?.showMyLocation(MyLocationOption(
-                        myLocationType: MyLocationType.FollowNoCenter,
-                      ));
+                      await _controller?.showMyLocation(
+                        MyLocationOption(
+                          myLocationType: MyLocationType.FollowNoCenter,
+                        ),
+                      );
                     } else if (value == '连续定位跟随方向') {
-                      await _controller?.showMyLocation(MyLocationOption(
-                        myLocationType: MyLocationType.Rotate,
-                      ));
+                      await _controller?.showMyLocation(
+                        MyLocationOption(myLocationType: MyLocationType.Rotate),
+                      );
                     }
                   },
                 ),
                 DiscreteSetting(
                   head: '选择定位间隔时间',
-                  options: <String>[
-                    '1秒',
-                    '3秒',
-                    '5秒',
-                  ],
+                  options: <String>['1秒', '3秒', '5秒'],
                   onSelected: (String value) async {
                     if (value == '1秒') {
-                      await _controller?.showMyLocation(MyLocationOption(
-                        myLocationType: MyLocationType.Follow,
-                        interval: Duration(seconds: 1),
-                      ));
+                      await _controller?.showMyLocation(
+                        MyLocationOption(
+                          myLocationType: MyLocationType.Follow,
+                          interval: Duration(seconds: 1),
+                        ),
+                      );
                     } else if (value == '3秒') {
-                      await _controller?.showMyLocation(MyLocationOption(
-                        myLocationType: MyLocationType.Follow,
-                        interval: Duration(seconds: 3),
-                      ));
+                      await _controller?.showMyLocation(
+                        MyLocationOption(
+                          myLocationType: MyLocationType.Follow,
+                          interval: Duration(seconds: 3),
+                        ),
+                      );
                     } else if (value == '5秒') {
-                      await _controller?.showMyLocation(MyLocationOption(
-                        myLocationType: MyLocationType.Follow,
-                        interval: Duration(seconds: 5),
-                      ));
+                      await _controller?.showMyLocation(
+                        MyLocationOption(
+                          myLocationType: MyLocationType.Follow,
+                          interval: Duration(seconds: 5),
+                        ),
+                      );
                     }
                   },
                 ),
@@ -121,7 +128,7 @@ class _CreateMapScreenState extends State<CreateMapScreen>
                   title: Center(child: Text('获取当前位置经纬度')),
                   onTap: () async {
                     final latLng = await _controller?.getLocation();
-                    toast('当前经纬度: ${latLng.latitude}, ${latLng.longitude}');
+                    toast('当前经纬度: ${latLng?.latitude}, ${latLng?.longitude}');
                   },
                 ),
                 ListTile(
@@ -134,7 +141,8 @@ class _CreateMapScreenState extends State<CreateMapScreen>
                   title: Center(child: Text('使用自定义定位图标')),
                   onTap: () async {
                     await _controller?.showMyLocation(
-                        MyLocationOption(iconProvider: _assetsIcon));
+                      MyLocationOption(iconProvider: _assetsIcon),
+                    );
                   },
                 ),
                 BooleanSetting(
@@ -186,22 +194,28 @@ class _CreateMapScreenState extends State<CreateMapScreen>
                   onSelected: (value) {
                     switch (value) {
                       case '红色':
-                        _controller?.showMyLocation(MyLocationOption(
-                          strokeColor: Colors.red,
-                          strokeWidth: 2,
-                        ));
+                        _controller?.showMyLocation(
+                          MyLocationOption(
+                            strokeColor: Colors.red,
+                            strokeWidth: 2,
+                          ),
+                        );
                         break;
                       case '绿色':
-                        _controller?.showMyLocation(MyLocationOption(
-                          strokeColor: Colors.green,
-                          strokeWidth: 2,
-                        ));
+                        _controller?.showMyLocation(
+                          MyLocationOption(
+                            strokeColor: Colors.green,
+                            strokeWidth: 2,
+                          ),
+                        );
                         break;
                       case '蓝色':
-                        _controller?.showMyLocation(MyLocationOption(
-                          strokeColor: Colors.blue,
-                          strokeWidth: 2,
-                        ));
+                        _controller?.showMyLocation(
+                          MyLocationOption(
+                            strokeColor: Colors.blue,
+                            strokeWidth: 2,
+                          ),
+                        );
                         break;
                     }
                   },
@@ -212,22 +226,28 @@ class _CreateMapScreenState extends State<CreateMapScreen>
                   onSelected: (value) {
                     switch (value) {
                       case '红色':
-                        _controller?.showMyLocation(MyLocationOption(
-                          fillColor: Colors.red,
-                          strokeWidth: 2,
-                        ));
+                        _controller?.showMyLocation(
+                          MyLocationOption(
+                            fillColor: Colors.red,
+                            strokeWidth: 2,
+                          ),
+                        );
                         break;
                       case '绿色':
-                        _controller?.showMyLocation(MyLocationOption(
-                          fillColor: Colors.green,
-                          strokeWidth: 2,
-                        ));
+                        _controller?.showMyLocation(
+                          MyLocationOption(
+                            fillColor: Colors.green,
+                            strokeWidth: 2,
+                          ),
+                        );
                         break;
                       case '蓝色':
-                        _controller?.showMyLocation(MyLocationOption(
-                          fillColor: Colors.blue,
-                          strokeWidth: 2,
-                        ));
+                        _controller?.showMyLocation(
+                          MyLocationOption(
+                            fillColor: Colors.blue,
+                            strokeWidth: 2,
+                          ),
+                        );
                         break;
                     }
                   },
@@ -238,19 +258,19 @@ class _CreateMapScreenState extends State<CreateMapScreen>
                   onSelected: (value) {
                     switch (value) {
                       case '2':
-                        _controller?.showMyLocation(MyLocationOption(
-                          strokeWidth: 2,
-                        ));
+                        _controller?.showMyLocation(
+                          MyLocationOption(strokeWidth: 2),
+                        );
                         break;
                       case '4':
-                        _controller?.showMyLocation(MyLocationOption(
-                          strokeWidth: 4,
-                        ));
+                        _controller?.showMyLocation(
+                          MyLocationOption(strokeWidth: 4),
+                        );
                         break;
                       case '8':
-                        _controller?.showMyLocation(MyLocationOption(
-                          strokeWidth: 8,
-                        ));
+                        _controller?.showMyLocation(
+                          MyLocationOption(strokeWidth: 8),
+                        );
                         break;
                     }
                   },
@@ -266,7 +286,8 @@ class _CreateMapScreenState extends State<CreateMapScreen>
                   onTap: () async {
                     final center = await _controller?.getCenterCoordinate();
                     toast(
-                        'center: lat: ${center.latitude}, lng: ${center.longitude}');
+                      'center: lat: ${center?.latitude}, lng: ${center?.longitude}',
+                    );
                   },
                 ),
                 ListTile(
@@ -282,13 +303,11 @@ class _CreateMapScreenState extends State<CreateMapScreen>
                 ListTile(
                   title: Center(child: Text('添加点击地图监听')),
                   onTap: () {
-                    _controller?.setMapClickedListener(
-                      (latLng) async {
-                        toast(
-                          '点击: lat: ${latLng.latitude}, lng: ${latLng.longitude}',
-                        );
-                      },
-                    );
+                    _controller?.setMapClickedListener((latLng) async {
+                      toast(
+                        '点击: lat: ${latLng.latitude}, lng: ${latLng.longitude}',
+                      );
+                    });
                   },
                 ),
                 ListTile(
@@ -303,10 +322,11 @@ class _CreateMapScreenState extends State<CreateMapScreen>
                 ListTile(
                   title: Center(child: Text('经纬度坐标转屏幕坐标')),
                   onTap: () async {
-                    final centerLatLng =
-                        await _controller.getCenterCoordinate();
-                    final screenPoint =
-                        await _controller?.toScreenLocation(centerLatLng);
+                    final centerLatLng = await _controller
+                        .getCenterCoordinate();
+                    final screenPoint = await _controller?.toScreenLocation(
+                      centerLatLng,
+                    );
                     toast('地图中心点对应的屏幕坐标为: $screenPoint');
                   },
                 ),
@@ -314,8 +334,9 @@ class _CreateMapScreenState extends State<CreateMapScreen>
                   title: Center(child: Text('屏幕坐标转经纬度坐标')),
                   onTap: () async {
                     final screenPoint = Point(250, 250);
-                    final latLng =
-                        await _controller?.fromScreenLocation(screenPoint);
+                    final latLng = await _controller?.fromScreenLocation(
+                      screenPoint,
+                    );
                     toast('屏幕坐标(250, 250)对应的经纬度坐标为: $latLng');
                   },
                 ),
@@ -323,7 +344,7 @@ class _CreateMapScreenState extends State<CreateMapScreen>
                   title: Center(child: Text('设置屏幕上的某个像素点为地图中心点')),
                   onTap: () async {
                     final screenPoint = Point(20, 20);
-//                    await _controller?.setPointToCenter(screenPoint);
+                    //                    await _controller?.setPointToCenter(screenPoint);
                   },
                 ),
                 ListTile(
@@ -384,8 +405,9 @@ class _CreateMapScreenState extends State<CreateMapScreen>
                 ListTile(
                   title: Center(child: Text('测试')),
                   onTap: () {
-                    context.navigator.push(MaterialPageRoute(
-                        builder: (context) => _SecondScreen()));
+                    context.navigator.push(
+                      MaterialPageRoute(builder: (context) => _SecondScreen()),
+                    );
                   },
                 ),
                 ListTile(
@@ -393,8 +415,10 @@ class _CreateMapScreenState extends State<CreateMapScreen>
                   onTap: () {
                     AmapLocation.instance
                         .listenLocation()
-                        .listen((it) =>
-                            _controller.setMyLocationRotateAngle(it.bearing))
+                        .listen(
+                          (it) =>
+                              _controller.setMyLocationRotateAngle(it.bearing ?? 0),
+                        )
                         .addTo(disposeBag);
                   },
                 ),
@@ -407,10 +431,10 @@ class _CreateMapScreenState extends State<CreateMapScreen>
                     );
                     final pathList = await result.drivePathList;
                     final stepList = [
-                      for (final path in pathList) ...await path.driveStepList
+                      for (final path in pathList) ...await path.driveStepList,
                     ];
                     final coordinateList = [
-                      for (final step in stepList) ...await step.polyline
+                      for (final step in stepList) ...await step.polyline,
                     ];
                     await _controller.addPlaybackTrace(
                       coordinateList,
@@ -426,7 +450,8 @@ class _CreateMapScreenState extends State<CreateMapScreen>
                         coordinate: coordinateList[i],
                         zoom: 18,
                         tilt: 45,
-                        bearing: bearing(
+                        bearing:
+                            bearing(
                               last.latitude,
                               last.longitude,
                               current.latitude,
@@ -453,7 +478,8 @@ class _CreateMapScreenState extends State<CreateMapScreen>
     double latitude2 = vector.radians(lat2);
     double longDiff = vector.radians(longitude2 - longitude1);
     double y = sin(longDiff) * cos(latitude2);
-    double x = cos(latitude1) * sin(latitude2) -
+    double x =
+        cos(latitude1) * sin(latitude2) -
         sin(latitude1) * cos(latitude2) * cos(longDiff);
     return (vector.degrees((atan2(y, x)) + 360) % 360);
   }
@@ -482,7 +508,7 @@ class _SecondScreen extends StatelessWidget {
     return DecoratedColumn(
       children: [
         Flexible(child: AmapView()),
-        RaisedButton(
+        ElevatedButton(
           onPressed: () {
             AmapLocation.instance.listenLocation().listen((event) {
               print(event);
@@ -490,7 +516,7 @@ class _SecondScreen extends StatelessWidget {
           },
           child: Text('开始定位'),
         ),
-        RaisedButton(
+        ElevatedButton(
           onPressed: () {
             AmapLocation.instance.stopLocation();
           },

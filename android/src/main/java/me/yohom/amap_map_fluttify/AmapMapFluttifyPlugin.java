@@ -21,7 +21,6 @@ import io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding;
 import io.flutter.plugin.common.BinaryMessenger;
 import io.flutter.plugin.common.MethodCall;
 import io.flutter.plugin.common.MethodChannel;
-import io.flutter.plugin.common.PluginRegistry.Registrar;
 import io.flutter.plugin.common.StandardMethodCodec;
 import io.flutter.plugin.platform.PlatformViewRegistry;
 
@@ -36,47 +35,6 @@ import static me.yohom.foundation_fluttify.FoundationFluttifyPluginKt.getHEAP;
 public class AmapMapFluttifyPlugin implements FlutterPlugin, MethodChannel.MethodCallHandler, ActivityAware {
 
     private static List<Map<String, Handler>> handlerMapList;
-
-    // v1 android embedding for compatible
-    public static void registerWith(Registrar registrar) {
-        final MethodChannel channel = new MethodChannel(registrar.messenger(), "me.yohom/amap_map_fluttify", new StandardMethodCodec(new FluttifyMessageCodec()));
-
-        AmapMapFluttifyPlugin plugin = new AmapMapFluttifyPlugin();
-
-        BinaryMessenger messenger = registrar.messenger();
-        PlatformViewRegistry platformViewRegistry = registrar.platformViewRegistry();
-        Activity activity = registrar.activity();
-
-        plugin.messenger = messenger;
-        plugin.platformViewRegistry = platformViewRegistry;
-
-        handlerMapList = new ArrayList<>();
-        handlerMapList.add(SubHandler0.getSubHandler(messenger));
-        handlerMapList.add(SubHandler1.getSubHandler(messenger));
-        handlerMapList.add(SubHandler2.getSubHandler(messenger));
-        handlerMapList.add(SubHandler3.getSubHandler(messenger));
-        handlerMapList.add(SubHandler4.getSubHandler(messenger));
-        handlerMapList.add(SubHandler5.getSubHandler(messenger));
-        handlerMapList.add(SubHandler6.getSubHandler(messenger));
-        handlerMapList.add(SubHandler7.getSubHandler(messenger));
-        handlerMapList.add(SubHandler8.getSubHandler(messenger));
-        handlerMapList.add(SubHandler9.getSubHandler(messenger));
-        handlerMapList.add(SubHandler10.getSubHandler(messenger));
-        handlerMapList.add(SubHandler11.getSubHandler(messenger));
-        handlerMapList.add(SubHandler12.getSubHandler(messenger));
-        handlerMapList.add(SubHandler13.getSubHandler(messenger));
-        handlerMapList.add(SubHandler14.getSubHandler(messenger));
-        handlerMapList.add(SubHandler15.getSubHandler(messenger));
-        handlerMapList.add(SubHandlerCustom.instance.getSubHandler(messenger, registrar.activity()));
-
-        channel.setMethodCallHandler(plugin);
-
-        // register platform view
-        platformViewRegistry.registerViewFactory("me.yohom/com.amap.api.maps.offlinemap.DownloadProgressView", new DownloadProgressViewFactory(messenger, activity));
-        platformViewRegistry.registerViewFactory("me.yohom/com.amap.api.maps.TextureMapView", new TextureMapViewFactory(messenger, activity));
-        platformViewRegistry.registerViewFactory("me.yohom/com.amap.api.maps.WearMapView", new WearMapViewFactory(messenger, activity));
-        platformViewRegistry.registerViewFactory("me.yohom/com.amap.api.maps.MapView", new MapViewFactory(messenger, activity));
-    }
 
     private BinaryMessenger messenger;
     private PlatformViewRegistry platformViewRegistry;

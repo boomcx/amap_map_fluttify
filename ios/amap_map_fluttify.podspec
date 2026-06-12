@@ -19,7 +19,7 @@ A new flutter plugin project.
   # flutter plugin dependency
   
   # sdk dependency
-  s.dependency 'AMap3DMap-NO-IDFA', '9.5.0'
+  s.dependency 'AMap3DMap-NO-IDFA', '9.2.1'
 
   s.static_framework = true
   s.ios.deployment_target = '13.0'

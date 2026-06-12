@@ -1,0 +1,10 @@
+include: package:flutter_lints/flutter.yaml
+
+linter:
+  rules:
+    camel_case_types: false
+    camel_case_extensions: false
+    omit_local_variable_types: false
+    unnecessary_this: false
+    no_leading_underscores_for_local_identifiers: false
+    library_private_types_in_public_api: false

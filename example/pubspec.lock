@@ -109,14 +109,6 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.4.0"
-  cherry_toast:
-    dependency: transitive
-    description:
-      name: cherry_toast
-      sha256: b7a778dc95bbe1401a236bdfb54d6140103f1bef00d2610911724f0577c8318b
-      url: "https://pub.flutter-io.cn"
-    source: hosted
-    version: "1.13.0"
   clock:
     dependency: transitive
     description:
@@ -181,22 +173,13 @@ packages:
     source: hosted
     version: "1.0.9"
   decorated_flutter:
-    dependency: transitive
-    description:
-      name: decorated_flutter
-      sha256: "78ca3238e4106f5c64a613bb68e10b6586dd115b8ea332aa27945580d6bb1839"
-      url: "https://pub.flutter-io.cn"
-    source: hosted
-    version: "0.50.4"
-  demo_widgets:
     dependency: "direct main"
     description:
-      path: "."
-      ref: HEAD
-      resolved-ref: b62991aaec2b88735b0b75c22b560da37d46673d
-      url: "https://github.com/boomcx/demo_widgets.git"
-    source: git
-    version: "0.5.0"
+      name: decorated_flutter
+      sha256: c8c57c702208765e10556e26012b94e38f77edbb6083e7eb276625b94ec0ebfa
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "0.51.4"
   dio:
     dependency: transitive
     description:
@@ -213,6 +196,14 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "2.1.2"
+  equatable:
+    dependency: transitive
+    description:
+      name: equatable
+      sha256: "3e0141505477fd8ad55d6eb4e7776d3fe8430be8e497ccb1521370c3f21a3e2b"
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "2.0.8"
   fake_async:
     dependency: transitive
     description:
@@ -262,10 +253,10 @@ packages:
     dependency: "direct main"
     description:
       name: flutter_easyrefresh
-      sha256: e645ad471bb8d7b6dbefbb858297d3870ace4f28730a6a94db38fc0438a6ca61
+      sha256: "5d161ee5dcac34da9065116568147d742dd25fb9bff3b10024d9054b195087ad"
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "2.2.1"
+    version: "2.2.2"
   flutter_localizations:
     dependency: transitive
     description: flutter
@@ -279,14 +270,6 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "2.3.0"
-  flutter_syntax_view:
-    dependency: transitive
-    description:
-      name: flutter_syntax_view
-      sha256: c5017bbedfdcf538daba765e16541fcb26434071655ca00cea7cbc205a70246a
-      url: "https://pub.flutter-io.cn"
-    source: hosted
-    version: "4.1.7"
   flutter_test:
     dependency: "direct dev"
     description: flutter
@@ -328,22 +311,6 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "5.3.4"
-  hive:
-    dependency: transitive
-    description:
-      name: hive
-      sha256: "8dcf6db979d7933da8217edcec84e9df1bdb4e4edc7fc77dbd5aa74356d6d941"
-      url: "https://pub.flutter-io.cn"
-    source: hosted
-    version: "2.2.3"
-  hive_flutter:
-    dependency: transitive
-    description:
-      name: hive_flutter
-      sha256: dca1da446b1d808a51689fb5d0c6c9510c0a2ba01e22805d492c73b68e33eecc
-      url: "https://pub.flutter-io.cn"
-    source: hosted
-    version: "1.1.0"
   http:
     dependency: transitive
     description:
@@ -368,6 +335,14 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "4.0.1"
+  iconsax_flutter:
+    dependency: transitive
+    description:
+      name: iconsax_flutter
+      sha256: d14b4cec8586025ac15276bdd40f6eea308cb85748135965bb6255f14beb2564
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "1.0.1"
   intl:
     dependency: transitive
     description:
@@ -544,6 +519,14 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "2.3.0"
+  pausable_timer:
+    dependency: transitive
+    description:
+      name: pausable_timer
+      sha256: "6ef1a95441ec3439de6fb63f39a011b67e693198e7dae14e20675c3c00e86074"
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "3.1.0+3"
   permission_handler:
     dependency: "direct main"
     description:
@@ -917,6 +900,14 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "0.6.11"
+  toastification:
+    dependency: transitive
+    description:
+      name: toastification
+      sha256: "69db2bff425b484007409650d8bcd5ed1ce2e9666293ece74dcd917dacf23112"
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "3.0.3"
   typed_data:
     dependency: transitive
     description:

@@ -3,19 +3,19 @@
   "packages": [
     {
       "name": "amap_core_fluttify",
-      "rootUri": "../../amap_core_fluttify",
+      "rootUri": "file:///Users/Apple/.pub-cache/git/amap_core_fluttify-10b03367687dcb4c9c32730d0fb5325cec0cc3a7/",
       "packageUri": "lib/",
       "languageVersion": "3.9"
     },
     {
       "name": "amap_location_fluttify",
-      "rootUri": "../../amap_location_fluttify",
+      "rootUri": "file:///Users/Apple/.pub-cache/git/amap_location_fluttify-12ac6c31087b1ca3fa1301c294f4e9a73a3c1586/",
       "packageUri": "lib/",
       "languageVersion": "3.9"
     },
     {
       "name": "amap_search_fluttify",
-      "rootUri": "../../amap_search_fluttify",
+      "rootUri": "file:///Users/Apple/.pub-cache/git/amap_search_fluttify-b70c4c43e66f5c7745ca4f823f1040834167973a/",
       "packageUri": "lib/",
       "languageVersion": "3.9"
     },
@@ -51,7 +51,7 @@
     },
     {
       "name": "core_location_fluttify",
-      "rootUri": "../../core_location_fluttify",
+      "rootUri": "file:///Users/Apple/.pub-cache/git/core_location_fluttify-cd900a7cb14abeddc356bca0edc1bf34e7d5bacb/",
       "packageUri": "lib/",
       "languageVersion": "3.9"
     },
@@ -87,7 +87,7 @@
     },
     {
       "name": "foundation_fluttify",
-      "rootUri": "../../foundation_fluttify",
+      "rootUri": "file:///Users/Apple/.pub-cache/git/foundation_fluttify-e41ea89bdf111b946d1a9ba2021a8bf100dc53aa/",
       "packageUri": "lib/",
       "languageVersion": "3.9"
     },
@@ -189,7 +189,7 @@
     },
     {
       "name": "uni_map_platform_interface",
-      "rootUri": "../../uni_map_platform_interface",
+      "rootUri": "file:///Users/Apple/.pub-cache/git/uni_map_platform_interface-6ede0bca98c6ffea2d65131d563ab051147d4cae/",
       "packageUri": "lib/",
       "languageVersion": "3.9"
     },

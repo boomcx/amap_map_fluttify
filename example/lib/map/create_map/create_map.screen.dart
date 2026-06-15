@@ -445,6 +445,7 @@ class _CreateMapScreenState extends State<CreateMapScreen>
                     await _controller.addPlaybackTrace(
                       coordinateList,
                       iconProvider: _assetsIcon,
+                      width: 10,
                       duration: Duration(
                         milliseconds: coordinateList.length * 500,
                       ),
@@ -493,6 +494,7 @@ class _CreateMapScreenState extends State<CreateMapScreen>
   @override
   void dispose() {
     disposeBag();
+    _controller.dispose();
     super.dispose();
   }
 

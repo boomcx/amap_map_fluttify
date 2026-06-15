@@ -10,7 +10,6 @@ dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: any
-  decorated_flutter: any
   permission_handler: ^12.0.0
   sliding_up_panel: any
   flutter_easyrefresh: any

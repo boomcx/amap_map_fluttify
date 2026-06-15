@@ -2,7 +2,6 @@ import 'dart:math';
 
 import 'package:amap_map_fluttify/amap_map_fluttify.dart';
 import 'package:amap_map_fluttify_example/utils/next_latlng.dart';
-import 'package:decorated_flutter/decorated_flutter.dart';
 import 'package:amap_map_fluttify_example/utils/demo_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -127,7 +126,13 @@ class _CreateMapScreenState extends State<CreateMapScreen>
                 ListTile(
                   title: Center(child: Text('获取当前位置经纬度')),
                   onTap: () async {
+                    print('------------------------------ 12312313');
+                    print('------------------------------ 12312313');
                     final latLng = await _controller?.getLocation();
+                    print('------------------------------');
+                    print('------------------------------');
+                    print('------------------------------');
+                    print('当前经纬度: ${latLng?.latitude}, ${latLng?.longitude}');
                     toast('当前经纬度: ${latLng?.latitude}, ${latLng?.longitude}');
                   },
                 ),
@@ -405,7 +410,7 @@ class _CreateMapScreenState extends State<CreateMapScreen>
                 ListTile(
                   title: Center(child: Text('测试')),
                   onTap: () {
-                    context.navigator.push(
+                    Navigator.of(context).push(
                       MaterialPageRoute(builder: (context) => _SecondScreen()),
                     );
                   },
@@ -416,10 +421,11 @@ class _CreateMapScreenState extends State<CreateMapScreen>
                     AmapLocation.instance
                         .listenLocation()
                         .listen(
-                          (it) =>
-                              _controller.setMyLocationRotateAngle(it.bearing ?? 0),
+                          (it) => _controller.setMyLocationRotateAngle(
+                            it.bearing ?? 0,
+                          ),
                         )
-                        .addTo(disposeBag);
+                        .addTo(this);
                   },
                 ),
                 ListTile(
@@ -482,6 +488,12 @@ class _CreateMapScreenState extends State<CreateMapScreen>
         cos(latitude1) * sin(latitude2) -
         sin(latitude1) * cos(latitude2) * cos(longDiff);
     return (vector.degrees((atan2(y, x)) + 360) % 360);
+  }
+
+  @override
+  void dispose() {
+    disposeBag();
+    super.dispose();
   }
 
   double getAngle(double lng1, double lat1, double lng2, double lat2) {

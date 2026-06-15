@@ -1,5 +1,5 @@
 import 'package:amap_map_fluttify/amap_map_fluttify.dart';
-import 'package:decorated_flutter/decorated_flutter.dart';
+import 'package:amap_map_fluttify_example/utils/demo_widgets.dart';
 import 'package:flutter/material.dart';
 
 class LaunchAmapScreen extends StatefulWidget {

@@ -1,4 +1,5 @@
 import 'package:amap_map_fluttify/amap_map_fluttify.dart';
+import 'package:amap_map_fluttify_example/utils/demo_widgets.dart';
 import 'package:flutter/material.dart';
 
 import 'map/map.screen.dart';
@@ -25,6 +26,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      navigatorKey: gNavigatorKey,
       home: Scaffold(
         appBar: AppBar(title: const Text('AMaps examples')),
         backgroundColor: Colors.grey.shade200,

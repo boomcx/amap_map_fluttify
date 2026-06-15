@@ -3,7 +3,7 @@ import 'dart:math';
 import 'package:amap_location_fluttify/amap_location_fluttify.dart';
 import 'package:amap_map_fluttify/amap_map_fluttify.dart';
 import 'package:amap_search_fluttify/amap_search_fluttify.dart';
-import 'package:decorated_flutter/decorated_flutter.dart';
+import 'package:amap_map_fluttify_example/utils/demo_widgets.dart';
 import 'package:flutter/material.dart';
 
 final random = Random();
@@ -71,7 +71,10 @@ class _GeoFenceScreenState extends State<GeoFenceScreen> {
             right: kSpace16,
             bottom: kSpace16,
             child: IgnorePointer(
-              child: Text(_fenceState, style: context.textTheme.headlineSmall),
+              child: Text(
+                _fenceState,
+                style: Theme.of(context).textTheme.headlineSmall,
+              ),
             ),
           ),
         ],

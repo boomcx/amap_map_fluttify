@@ -10,7 +10,7 @@ import 'models.dart';
 
 const _iconSize = 50.0;
 const _package = 'amap_all_fluttify';
-const _indicator = 'test_icon/indicator.png';
+const _indicator = 'images/test_icon.png';
 double _fabHeight = 16.0;
 
 typedef RequestPermission = Future<bool> Function();

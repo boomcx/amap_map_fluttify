@@ -71,10 +71,7 @@ class _GeoFenceScreenState extends State<GeoFenceScreen> {
             right: kSpace16,
             bottom: kSpace16,
             child: IgnorePointer(
-              child: Text(
-                _fenceState,
-                style: Theme.of(context).textTheme.headlineSmall,
-              ),
+              child: Text(_fenceState, style: Theme.of(context).textTheme.headlineSmall),
             ),
           ),
         ],

@@ -91,6 +91,15 @@
       ]
     },
     {
+      "name": "uni_map_platform_interface",
+      "version": "0.7.0",
+      "dependencies": [
+        "core_location_fluttify",
+        "flutter",
+        "foundation_fluttify"
+      ]
+    },
+    {
       "name": "url_launcher",
       "version": "6.3.2",
       "dependencies": [
@@ -102,15 +111,6 @@
         "url_launcher_platform_interface",
         "url_launcher_web",
         "url_launcher_windows"
-      ]
-    },
-    {
-      "name": "uni_map_platform_interface",
-      "version": "0.7.0",
-      "dependencies": [
-        "core_location_fluttify",
-        "flutter",
-        "foundation_fluttify"
       ]
     },
     {

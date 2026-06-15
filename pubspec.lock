@@ -4,29 +4,23 @@ packages:
   amap_core_fluttify:
     dependency: "direct main"
     description:
-      path: "."
-      ref: HEAD
-      resolved-ref: "10b03367687dcb4c9c32730d0fb5325cec0cc3a7"
-      url: "https://github.com/boomcx/amap_core_fluttify"
-    source: git
+      path: "../amap_core_fluttify"
+      relative: true
+    source: path
     version: "0.17.0"
   amap_location_fluttify:
     dependency: "direct main"
     description:
-      path: "."
-      ref: HEAD
-      resolved-ref: "12ac6c31087b1ca3fa1301c294f4e9a73a3c1586"
-      url: "https://github.com/boomcx/amap_location_fluttify"
-    source: git
+      path: "../amap_location_fluttify"
+      relative: true
+    source: path
     version: "0.21.0"
   amap_search_fluttify:
     dependency: "direct main"
     description:
-      path: "."
-      ref: HEAD
-      resolved-ref: b70c4c43e66f5c7745ca4f823f1040834167973a
-      url: "https://github.com/boomcx/amap_search_fluttify"
-    source: git
+      path: "../amap_search_fluttify"
+      relative: true
+    source: path
     version: "0.18.0"
   async:
     dependency: transitive
@@ -71,11 +65,9 @@ packages:
   core_location_fluttify:
     dependency: "direct main"
     description:
-      path: "."
-      ref: HEAD
-      resolved-ref: cd900a7cb14abeddc356bca0edc1bf34e7d5bacb
-      url: "https://github.com/boomcx/core_location_fluttify"
-    source: git
+      path: "../core_location_fluttify"
+      relative: true
+    source: path
     version: "0.7.1"
   fake_async:
     dependency: transitive
@@ -111,11 +103,9 @@ packages:
   foundation_fluttify:
     dependency: "direct main"
     description:
-      path: "."
-      ref: HEAD
-      resolved-ref: e41ea89bdf111b946d1a9ba2021a8bf100dc53aa
-      url: "https://github.com/boomcx/foundation_fluttify"
-    source: git
+      path: "../foundation_fluttify"
+      relative: true
+    source: path
     version: "0.14.0"
   leak_tracker:
     dependency: transitive
@@ -245,11 +235,9 @@ packages:
   uni_map_platform_interface:
     dependency: "direct main"
     description:
-      path: "."
-      ref: HEAD
-      resolved-ref: "6ede0bca98c6ffea2d65131d563ab051147d4cae"
-      url: "https://github.com/boomcx/uni_map_platform_interface"
-    source: git
+      path: "../uni_map_platform_interface"
+      relative: true
+    source: path
     version: "0.7.0"
   url_launcher:
     dependency: "direct main"

@@ -12,14 +12,11 @@ extension com_amap_api_maps_model_UrlTileProvider_X
   ) async {
     final result = await kAmapMapFluttifyChannel.invokeMethod(
       'com.amap.api.maps.model.UrlTileProviderX::create',
-      {
-        'width': width,
-        'height': height,
-        'urlTemplate': urlTemplate,
-      },
+      {'width': width, 'height': height, 'urlTemplate': urlTemplate},
     );
     return (await AmapMapFluttifyAndroidAs<
-        com_amap_api_maps_model_UrlTileProvider>(result))!;
+      com_amap_api_maps_model_UrlTileProvider
+    >(result))!;
   }
 }
 
@@ -132,7 +129,9 @@ extension MAPointAnnotationListX on List<MAPointAnnotation> {
 extension LatLngX on LatLng {
   Future<com_amap_api_maps_model_LatLng> toAndroidModel() async {
     return com_amap_api_maps_model_LatLng.create__double__double(
-        latitude, longitude);
+      latitude,
+      longitude,
+    );
   }
 
   Future<CLLocationCoordinate2D> toIOSModel() async {
@@ -146,11 +145,11 @@ extension MarkerAnimationX on MarkerAnimation {
     if (this is ScaleMarkerAnimation) {
       result = await com_amap_api_maps_model_animation_ScaleAnimation
           .create__float__float__float__float(
-        fromValue ?? 0,
-        toValue ?? 0,
-        fromValue ?? 0,
-        toValue ?? 0,
-      );
+            fromValue ?? 0,
+            toValue ?? 0,
+            fromValue ?? 0,
+            toValue ?? 0,
+          );
     } else if (this is AlphaMarkerAnimation) {
       result = await com_amap_api_maps_model_animation_AlphaAnimation
           .create__float__float(fromValue ?? 0, toValue ?? 0);
@@ -161,7 +160,8 @@ extension MarkerAnimationX on MarkerAnimation {
       final target = (this as TranslateMarkerAnimation).coordinate;
       result = await com_amap_api_maps_model_animation_TranslateAnimation
           .create__com_amap_api_maps_model_LatLng(
-              await target.toAndroidModel());
+            await target.toAndroidModel(),
+          );
     } else if (this is MarkerAnimationSet) {
       final _this = this as MarkerAnimationSet;
       result = await com_amap_api_maps_model_animation_AnimationSet
@@ -176,7 +176,7 @@ extension MarkerAnimationX on MarkerAnimation {
     // 几次动画 参考 https://a.amap.com/lbs/static/unzip/Android_Map_Doc/index.html
     await result?.setRepeatCount(repeatCount - 1);
     await result?.setRepeatMode(
-      repeatMode == RepeatMode.Restart
+      repeatMode == UniRepeatMode.Restart
           ? com_amap_api_maps_model_animation_Animation.RESTART
           : com_amap_api_maps_model_animation_Animation.REVERSE,
     );

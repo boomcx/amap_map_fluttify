@@ -3,8 +3,8 @@ description: Demonstrates how to use the amap_map_fluttify plugin.
 publish_to: 'none'
 
 environment:
-  sdk: '>=3.9.2 <4.0.0'
-  flutter: '>=3.35.0'
+  sdk: '>=3.6.2 <4.0.0'
+  flutter: '>=3.27.4'
 
 dependencies:
   flutter:

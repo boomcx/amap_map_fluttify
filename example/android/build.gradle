@@ -1,14 +1,11 @@
+
 allprojects {
     repositories {
-        // 阿里镜像前置提速
         maven { url 'https://maven.aliyun.com/repository/google' }
         maven { url 'https://maven.aliyun.com/repository/central' }
-        maven { url 'https://maven.aliyun.com/repository/public' }
-        // 关键：Flutter 本地仓库（必加）
+        maven { url 'https://maven.aliyun.com/repository/gradle-plugin' }
         google()
         mavenCentral()
-        gradlePluginPortal()
-
     }
 }
 

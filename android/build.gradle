@@ -1,21 +1,13 @@
-group 'me.yohom.amap_map_fluttify'
-version '1.0-SNAPSHOT'
-
-// rootProject.allprojects {
-//     repositories {
-//         maven { url 'https://maven.aliyun.com/repository/google' }
-//         maven { url 'https://maven.aliyun.com/repository/central' }
-//         google()
-//         mavenCentral()
-//     }
-// }
-
-apply plugin: 'com.android.library'
-apply plugin: 'kotlin-android'
+// 1. 【彻底移除】group/version 声明（Flutter 插件由 pubspec.yaml 管理版本）
+// 2. 【升级语法】使用声明式插件配置
+plugins {
+    id "com.android.library"
+    id "org.jetbrains.kotlin.android"
+}
 
 android {
-    namespace 'me.yohom.amap_map_fluttify'
-    compileSdk 36
+    namespace "me.yohom.amap_map_fluttify"
+    compileSdk 34
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_17
@@ -23,25 +15,36 @@ android {
     }
 
     kotlinOptions {
-        jvmTarget = '17'
+        jvmTarget = "17"
     }
 
     sourceSets {
-        main.java.srcDirs += 'src/main/kotlin'
-        main.jniLibs.srcDir 'libs'
+        main.java.srcDirs += "src/main/kotlin"
+        main.jniLibs.srcDir "libs" // 保留原生库路径配置
     }
+
     defaultConfig {
         minSdk 21
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
+
     lint {
-        disable 'InvalidPackage'
+        disable "InvalidPackage"
     }
+
     packaging {
         resources {
-            merges += ['res/values/values.xml', 'AndroidManifest.xml', 'R.txt', 'classes.jar', 'proguard.txt']
+            // 修正 merges 语法（Gradle 8.0+ 兼容写法）
+            merges += [
+                "res/values/values.xml",
+                "AndroidManifest.xml",
+                "R.txt",
+                "classes.jar",
+                "proguard.txt"
+            ]
         }
     }
+
     buildTypes {
         release {
             consumerProguardFiles "proguard-rules.pro"
@@ -50,10 +53,13 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar', '*.aar'])
-    implementation 'androidx.annotation:annotation:1.7.0'
-    implementation 'androidx.appcompat:appcompat:1.6.1'
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:2.1.0"
-    compileOnly rootProject.findProject(":foundation_fluttify")
-    api 'com.amap.api:3dmap:9.2.1'
+    implementation fileTree(dir: "libs", include: ["*.jar", "*.aar"])
+    implementation "androidx.annotation:annotation:1.7.0"
+    implementation "androidx.appcompat:appcompat:1.6.1"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.9.0"
+    
+    // 修正项目依赖语法（关键修改！）
+    compileOnly project(path: ":foundation_fluttify", configuration: "default")
+    
+    api "com.amap.api:3dmap:9.2.1" // 高德地图3D SDK
 }

@@ -5,19 +5,19 @@
       "name": "amap_core_fluttify",
       "rootUri": "../../amap_core_fluttify",
       "packageUri": "lib/",
-      "languageVersion": "3.9"
+      "languageVersion": "3.6"
     },
     {
       "name": "amap_location_fluttify",
       "rootUri": "../../amap_location_fluttify",
       "packageUri": "lib/",
-      "languageVersion": "3.9"
+      "languageVersion": "3.6"
     },
     {
       "name": "amap_search_fluttify",
       "rootUri": "../../amap_search_fluttify",
       "packageUri": "lib/",
-      "languageVersion": "3.9"
+      "languageVersion": "3.6"
     },
     {
       "name": "async",
@@ -53,7 +53,7 @@
       "name": "core_location_fluttify",
       "rootUri": "../../core_location_fluttify",
       "packageUri": "lib/",
-      "languageVersion": "3.9"
+      "languageVersion": "3.6"
     },
     {
       "name": "fake_async",
@@ -89,7 +89,7 @@
       "name": "foundation_fluttify",
       "rootUri": "../../foundation_fluttify",
       "packageUri": "lib/",
-      "languageVersion": "3.9"
+      "languageVersion": "3.6"
     },
     {
       "name": "leak_tracker",
@@ -191,7 +191,7 @@
       "name": "uni_map_platform_interface",
       "rootUri": "../../uni_map_platform_interface",
       "packageUri": "lib/",
-      "languageVersion": "3.9"
+      "languageVersion": "3.6"
     },
     {
       "name": "url_launcher",
@@ -263,7 +263,7 @@
       "name": "amap_map_fluttify",
       "rootUri": "../",
       "packageUri": "lib/",
-      "languageVersion": "3.9"
+      "languageVersion": "3.6"
     }
   ],
   "generator": "pub",

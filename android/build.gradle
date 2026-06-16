@@ -1,14 +1,14 @@
 group 'me.yohom.amap_map_fluttify'
 version '1.0-SNAPSHOT'
 
-rootProject.allprojects {
-    repositories {
-        maven { url 'https://maven.aliyun.com/repository/google' }
-        maven { url 'https://maven.aliyun.com/repository/central' }
-        google()
-        mavenCentral()
-    }
-}
+// rootProject.allprojects {
+//     repositories {
+//         maven { url 'https://maven.aliyun.com/repository/google' }
+//         maven { url 'https://maven.aliyun.com/repository/central' }
+//         google()
+//         mavenCentral()
+//     }
+// }
 
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
@@ -53,7 +53,7 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar', '*.aar'])
     implementation 'androidx.annotation:annotation:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.6.1'
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:2.1.0"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:2.1.0"
     compileOnly rootProject.findProject(":foundation_fluttify")
     api 'com.amap.api:3dmap:9.2.1'
 }

@@ -6,7 +6,7 @@ import 'map/map.screen.dart';
 
 Future<void> main() async {
   runApp(MyApp());
-
+ 
   await enableFluttifyLog(false);
   await AmapService.instance.updatePrivacyAgree(true);
   await AmapService.instance.updatePrivacyShow(true);

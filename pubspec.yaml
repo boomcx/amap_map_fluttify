@@ -13,23 +13,23 @@ dependencies:
   
   url_launcher: ^6.3.1
   uni_map_platform_interface:
-    path: ../uni_map_platform_interface
-    # git: https://github.com/boomcx/uni_map_platform_interface
+    # path: ../uni_map_platform_interface
+    git: https://github.com/boomcx/uni_map_platform_interface
   foundation_fluttify: 
-    path: ../foundation_fluttify
-    # git: https://github.com/boomcx/foundation_fluttify
+    # path: ../foundation_fluttify
+    git: https://github.com/boomcx/foundation_fluttify
   core_location_fluttify: 
-    path: ../core_location_fluttify
-    # git: https://github.com/boomcx/core_location_fluttify
+    # path: ../core_location_fluttify
+    git: https://github.com/boomcx/core_location_fluttify
   amap_core_fluttify: 
-    path: ../amap_core_fluttify
-    # git: https://github.com/boomcx/amap_core_fluttify
+    # path: ../amap_core_fluttify
+    git: https://github.com/boomcx/amap_core_fluttify
   amap_search_fluttify: 
-    path: ../amap_search_fluttify
-    # git: https://github.com/boomcx/amap_search_fluttify
+    # path: ../amap_search_fluttify
+    git: https://github.com/boomcx/amap_search_fluttify
   amap_location_fluttify: 
-    path: ../amap_location_fluttify
-    # git: https://github.com/boomcx/amap_location_fluttify
+    # path: ../amap_location_fluttify
+    git: https://github.com/boomcx/amap_location_fluttify
 
 dev_dependencies:
   flutter_test:
